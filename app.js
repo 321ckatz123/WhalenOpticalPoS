@@ -1,5 +1,6 @@
 "use strict";
 
+var http = require('http');
 var path = require('path');
 
 // load the configuration
@@ -70,7 +71,9 @@ app.use(compression());
 //swagger.configure(process.env.API, "1.0");
 
 // start listening for requests on the configured port
-app.listen(app.get('port'));
+http.createServer(app).listen(app.get('port'), function() {
+    console.log('Express server listening on port ' + app.get('port'));
+});
 
 app.use("/", function (req, res, next) {
     res.render('index', { title: 'Whalen Optical' });
