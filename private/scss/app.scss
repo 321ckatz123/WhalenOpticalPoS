@@ -1,0 +1,16 @@
+// ensure our custom mixins are loaded
+//@import 'mixins';
+// load our settings first to make sure that the below settings files can make use of them
+@import 'settings/site';
+// normalize should be the first CSS being called to ensure everything works from a standard spot
+@import 'normalize';
+// load our overriden Foundation settings first (and let Foundation default the others)
+@import 'settings/foundation';
+@import 'foundation';
+// load our overriden Bourbon settings first (and let Bourbon default the others)
+@import 'settings/bourbon';
+@import 'bourbon';
+// load the override after Bourbon as we are overriding some of it's mixins
+@import 'override';
+@import 'structure/shell';
+@import 'structure/login';

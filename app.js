@@ -16,7 +16,7 @@ app.set('view engine', 'jade');
 app.set('title', 'Whalen Optical');
 
 // specify the path to the "public" namespace
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, ".dist")));
 
 // Allow cross domain calling
 app.all('/*', function (req, res, next) {
@@ -76,5 +76,5 @@ http.createServer(app).listen(app.get('port'), function() {
 });
 
 app.use("/", function (req, res, next) {
-    res.render('index', { title: 'Whalen Optical' });
+    res.render('login', { title: 'Whalen Optical' });
 });

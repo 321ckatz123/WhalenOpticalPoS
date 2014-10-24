@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    .login
+        .loginContainer
+            form
+                .panel.radius
+                    .text-center
+                        h1
+                            |Whalen Optical
+                        img(src='/img/glasses.png', alt='Glasses', class='text-center')
+                    .textboxContainer
+                        label(for='Username')
+                            |Username
+                        input.radius(type='text', placeholder='Username',id='Username')
+                        label(for='Password')
+                            |Password
+                        input.radius(type='password', placeholder='Password',id='Password')
+                        .text-center
+                            input.radius.button(type='button',value='Login')
