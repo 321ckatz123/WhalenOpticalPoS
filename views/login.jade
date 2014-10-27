@@ -3,18 +3,16 @@ extends layout
 block content
     .login
         .loginContainer
-            form
+            form(method='post',action='login')
                 .panel.radius
                     .text-center
                         h1
                             |Whalen Optical
                         img(src='/img/glasses.png', alt='Glasses', class='text-center')
                     .textboxContainer
-                        label(for='Username')
-                            |Username
-                        input.radius(type='text', placeholder='Username',id='Username')
-                        label(for='Password')
-                            |Password
-                        input.radius(type='password', placeholder='Password',id='Password')
+                        label(for='username') Username
+                        input#username.radius(type='text', placeholder='Username',name='username')
+                        label(for='password') Password
+                        input#password.radius(type='password', placeholder='Password',name='password')
                         .text-center
-                            input.radius.button(type='button',value='Login')
+                            input.radius.button(type='submit',value='Login')
