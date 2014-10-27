@@ -1,0 +1,24 @@
+div.header {
+  width: 100%;
+  border-bottom: solid 1px $black;
+  margin: 0 0 20px 0;
+
+  ul.header {
+    width: 1000px;
+    min-height: 100px;
+    list-style: none;
+    display: table;
+    table-layout: fixed;
+    padding-top: 10px;
+    margin: 0 auto;
+
+    li {
+      display: table-cell;
+      text-align: center;
+
+      label.logo {
+        font-size: 120%;
+      }
+    }
+  }
+}
