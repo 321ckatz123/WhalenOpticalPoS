@@ -10,8 +10,7 @@
   }
 
   form {
+    @include size(400px 420px);
     margin: 0 auto;
-    width: 400px;
-    height: 420px;
   }
 }
