@@ -1,23 +1,43 @@
 div.header {
   width: 100%;
+  height: 78px;
   border-bottom: solid 1px $black;
   margin: 0 0 20px 0;
+  background-color: rgba(#e0f2be, 0.5);
 
-  ul.header {
-    width: 1000px;
-    min-height: 100px;
-    list-style: none;
-    display: table;
-    table-layout: fixed;
-    padding-top: 10px;
+  @media #{$small-only} {
+    height: 58px;
+  }
+
+  .logo {
+    max-width: 1000px;
     margin: 0 auto;
+    font-size: 500%;
+    font-family: 'Alex Brush', cursive;
+    text-align: center;
+    position: relative;
+    top: -20px;
 
-    li {
-      display: table-cell;
-      text-align: center;
+    @media #{$small-only} {
+      font-size: 200%;
+      top: 6px;
+    }
 
-      label.logo {
-        font-size: 120%;
+    img {
+      position: relative;
+      top: -10px;
+
+      @media #{$small-only} {
+        top: -4px;
+      }
+    }
+
+    span {
+      &:first-child {
+        margin-right: 20px;
+      }
+      &:last-child {
+        margin-left: 20px;
       }
     }
   }
