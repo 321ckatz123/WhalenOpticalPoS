@@ -1,8 +1,8 @@
 // FONTS
 $font-size: 16px;
-
-// SIZES
-$question-height: 73px;
+$sans-family: "Lato", Arial, sans-serif;
+$header-family: "Viga", $sans-family;
+$cursive-family: "Alex Brush", cursive;
 
 // COLORS
 
@@ -11,10 +11,11 @@ $blue-light: #4196EC;
 $blue-light-accent: #4583C2;
 $blue: #001F63;
 $blue-dark: #001B5E;
-$teal: #008CBA;
+$teal: #05B8CC;
 
 // gray palette
-$gray-lightest: #BABFC5;
+$gray-lightest: #E1E6EB;
+$gray-lighter-still: #C8CBCF;
 $gray-lighter: #919AA1;
 $gray-light: #666666;
 $gray: #4F5B66;

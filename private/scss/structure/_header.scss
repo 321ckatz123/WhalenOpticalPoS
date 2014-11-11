@@ -1,9 +1,9 @@
 div.header {
   width: 100%;
   height: 78px;
-  border-bottom: solid 1px $black;
+  border-bottom: solid 3px $black;
   margin: 0 0 20px 0;
-  background-color: rgba(#e0f2be, 0.5);
+  background-color: rgba($teal, 0.5);
 
   @media #{$small-only} {
     height: 58px;
@@ -13,7 +13,7 @@ div.header {
     max-width: 1000px;
     margin: 0 auto;
     font-size: 500%;
-    font-family: 'Alex Brush', cursive;
+    font-family: $cursive-family;
     text-align: center;
     position: relative;
     top: -20px;

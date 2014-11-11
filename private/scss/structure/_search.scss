@@ -1,0 +1,16 @@
+.search {
+  display: table;
+  height: 36px;
+  width: 100%;
+  padding-right: 36px;
+  background: url('/img/search.png') top right no-repeat;
+  cursor: pointer;
+
+  input[type=text] {
+    margin: 0;
+    height: 36px;
+    font-size: 1em;
+    padding-top: .33em;
+    cursor: hand;
+  }
+}

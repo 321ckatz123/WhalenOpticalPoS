@@ -1,0 +1,26 @@
+.content {
+  margin: 0 auto .9375rem;
+  max-width: 1000px;
+  background-color: $white;
+  @include prefixer(box-shadow, 0 0 5px rgba(#999, 0.75), webkit moz spec);
+
+  .header {
+    background-color: $white;
+    border: none;
+    border-bottom: solid 1px $gray-lighter-still;
+    color: $blue-dark;
+    font-weight: 700;
+    margin: 0;
+    padding: 10px 20px;
+    height: auto;
+  }
+  .container {
+    padding: 10px 20px;
+    min-height: 180px;
+
+    .name {
+      color: $blue-dark;
+      font-size: 1.6em;
+    }
+  }
+}
