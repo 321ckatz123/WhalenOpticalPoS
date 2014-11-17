@@ -1,8 +1,10 @@
 .content {
+  @include prefixer(box-shadow, 0 0 5px rgba(#999, 0.75), webkit moz spec);
+  @include clearfix();
+
   margin: 0 auto .9375rem;
   max-width: 1000px;
   background-color: $white;
-  @include prefixer(box-shadow, 0 0 5px rgba(#999, 0.75), webkit moz spec);
 
   .header {
     background-color: $white;

@@ -1,11 +1,19 @@
 doctype html
-html
+html(ng-app="app")
     head
         title= title
         link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Alex+Brush', type='text/css')
         link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic', type='text/css')
         link(rel='stylesheet', href='/css/app.css', type='text/css')
         link(rel='shortcut icon', href='/img/favicon.ico', type='image/x-icon')
+        script(src='/js/app.js', language="Javascript")
     body
-        include header
+        include partials/header
         block content
+
+        script(type="text/ng-template", id="/address.html")
+            include partials/address
+        script(type="text/ng-template", id="/prescription.html")
+            include partials/prescription
+        script(type="text/ng-template", id="/order.html")
+            include partials/order

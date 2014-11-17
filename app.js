@@ -128,5 +128,5 @@ app.use("/", function (req, res, next) {
     //    res.render('index', {title: 'Whalen Optical'});
     //}
     //res.redirect('/login');
-    res.render('index', {title: 'Whalen Optical'});
+    res.render('pages/index', {title: 'Whalen Optical'});
 });

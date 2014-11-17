@@ -2,6 +2,8 @@
   "name": "Whalen Optical PoS",
   "dependencies": {
     "foundation": "5.4.6",
-    "bourbon": "3.2.3"
+    "bourbon": "3.2.3",
+    "angular": "1.3.2",
+    "lodash": "2.4.1"
   }
 }

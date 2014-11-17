@@ -15,7 +15,10 @@ gulp.task('sass_clean', function (cb) {
     del([distDir + '/scss'], cb);
 });
 gulp.task('sass', ['sass_clean'], function () {
-    return gulp.src('private/scss/app.scss')
+    return gulp.src([
+        'bower_components/angular-carousel/angular-carousel.css',
+        'private/scss/app.scss'
+    ])
         .pipe(require('gulp-sass')({
             includePaths: [
                 'bower_components/foundation/scss',
@@ -33,33 +36,34 @@ gulp.task('lint', function () {
         .pipe(jshint.reporter('default'));
 });
 
-gulp.task('scripts', ['lint'], function () {
+gulp.task('scripts_clean', function (cb) {
+    del([distDir + '/js'], cb);
+});
+gulp.task('scripts', ['scripts_clean'], function () {
     //Put anything that is needed in order, then fill in the rest of the JS
     return gulp.src([
-        'bower_components/console-polyfill/index.js',
         'bower_components/angular/angular.js',
         'bower_components/angular-route/angular-route.js',
         'bower_components/angular-animate/angular-animate.js',
         'bower_components/angular-foundation/mm-foundation-tpls.js',
-        'node_modules/swagger-client/lib/shred.bundle.js',
-        'node_modules/swagger-client/lib/swagger.js',
-        'bower_components/queue-async/queue.js',
         'bower_components/moment/moment.js',
-        'private/js/services/app.services.js',
+        'bower_components/lodash/dist/lodash.js',
+        'private/js/app.js',
+        'private/js/filters/app.filters.js',
+        'private/js/filters/Phone.js',
         'private/js/controllers/app.controllers.js',
-        'private/js/directives/app.directives.js',
-        'private/js/**/*.js'
+        'private/js/controllers/IndexCtrl.js'
     ])
         .pipe(concat('app.js'))
-        .pipe(replace(_gulpTokenReplaceOptions))
-        .pipe(gulpif(!env.isDev, require('gulp-strip-debug')()))
-        .pipe(gulpif(!env.isDev, require('gulp-uglify')({
-            compress: true,
-            mangle: true,
-            output: {
-                beautify: false
-            }
-        })))
+        //.pipe(replace(_gulpTokenReplaceOptions))
+        //.pipe(gulpif(!env.isDev, require('gulp-strip-debug')()))
+        //.pipe(gulpif(!env.isDev, require('gulp-uglify')({
+        //    compress: true,
+        //    mangle: true,
+        //    output: {
+        //        beautify: false
+        //    }
+        //})))
         .pipe(gulp.dest(distDir + '/js'))
 });
 
@@ -71,8 +75,9 @@ gulp.task('copy_public', function () {
 // Watch Files For Changes
 gulp.task('watch', function () {
     gulp.watch('private/scss/**/*.scss', ['sass']);
+    gulp.watch('private/js/**/*.js', ['scripts']);
 });
 
-gulp.task('deploy', ['sass', 'copy_public']);
+gulp.task('deploy', ['sass', 'scripts', 'copy_public']);
 
 gulp.task('default', ['deploy', 'watch']);

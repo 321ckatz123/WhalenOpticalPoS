@@ -1,0 +1,11 @@
+div.name {{$info.fName}} {{$info.lName}}
+div {{$info.address1}}
+div(ng-if="$info.address2") {{$info.address2}}
+div {{$info.city}}, {{$info.state}} {{$info.zip}}
+br(ng-if="$info.phone || $info.dob")
+div(ng-if="$info.phone")
+    strong p:
+    | &nbsp;{{$info.phone | phone}}
+div(ng-if="$info.dob")
+    strong dob:
+    | &nbsp;{{$info.dob | date:'MM/dd/yyyy'}}

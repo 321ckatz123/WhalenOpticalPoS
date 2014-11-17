@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+    div.index(ng-controller="IndexCtrl")
+        div.row
+            div.large-12.columns
+                div.content.search
+                    input(type='text', placeholder='Search...')
+        div.row
+            div.large-5.columns
+                div.content
+                    div.header MOST RECENT INFORMATION
+                    div.container(ng-include, ng-if="mostRecentOrder && mostRecentOrder.information" onload="$info = mostRecentOrder.information", src="'/address.html'")
+                    div.container(ng-if="!mostRecentOrder || !mostRecentOrder.information") No previous orders
+            div.large-7.columns
+                div.content
+                    div.header MOST RECENT PRESCRIPTION
+                    div.container
+        div.row
+            div.large-12.columns
+                div.content
+                    div.header ORDERS
+                    div.container

@@ -1,0 +1,17 @@
+div.large-12(ng-repeat="order in orders")
+    div.content
+        div.header {{OrderDate}}
+        div.container
+            div.large-5.columns
+                include ../partials/address
+            div.large-7.columns
+                include ../partials/prescription
+            div.large-12
+                div.header FRAME
+                div.container
+            div.large-12
+                include ../partials/lens
+            div.large-12
+                div.header NOTES
+                div.container
+                    textarea(rows=6)
