@@ -1,3 +1,27 @@
+@mixin prescriptionHeader {
+  font-style: normal;
+  font-weight: 700;
+  color: $blue-dark;
+}
+
+.container.prescription {
+  min-height: 172px;
+}
+
+.previousPrescription {
+
+  &.prior {
+    cursor: pointer;
+  }
+
+  text-align: center;
+  color: $monsoon;
+  border-top: solid 1px $iron;
+  background-color: $vapor;
+  font-style: italic;
+  font-size: .875em;
+}
+
 ul.prescription {
   list-style: none;
   padding: 5px 0 0;
@@ -6,20 +30,24 @@ ul.prescription {
 
   &.description {
     li {
-      font-style: normal;
-      font-weight: 700;
-      color: $blue-dark;
+      @include prescriptionHeader();
     }
   }
 
   li {
     &:first-of-type {
       width: 5%;
-      font-style: normal;
-      font-weight: 700;
-      color: $blue-dark;
+      @include prescriptionHeader();
+    }
+    &.pupillary {
+      @include position(relative, 16px null null null);
     }
 
+    &.pupillary.description {
+      width: auto;
+      min-width: 140px;
+      @include prescriptionHeader();
+    }
     width: 19%;
     display: inline-block;
     text-align: center;

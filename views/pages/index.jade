@@ -10,12 +10,16 @@ block content
             div.large-5.columns
                 div.content
                     div.header MOST RECENT INFORMATION
-                    div.container(ng-include, ng-if="mostRecentOrder && mostRecentOrder.information" onload="$info = mostRecentOrder.information", src="'/address.html'")
-                    div.container(ng-if="!mostRecentOrder || !mostRecentOrder.information") No previous orders
+                    div.container(ng-include, ng-if="mostRecentAddress" onload="$info = mostRecentAddress", src="'/address.html'")
+                    div.container(ng-if="!mostRecentAddress") No previous orders
             div.large-7.columns
                 div.content
-                    div.header MOST RECENT PRESCRIPTION
-                    div.container
+                    div.header {{viewPriorPrescription ? 'PREVIOUS' : 'MOST RECENT'}} PRESCRIPTION
+                    div.container.prescription(ng-include, ng-if="mostRecentPrescription && !viewPriorPrescription", onload="$info = mostRecentPrescription", src="'/prescription.html'")
+                    div.container.prescription(ng-include, ng-if="mostRecentPrescription && viewPriorPrescription", onload="$info = priorPrescription", src="'/prescription.html'")
+                    div.container.prescription(ng-if="!mostRecentPrescription") No previous prescriptions
+                    div.previousPrescription.prior(ng-click="changeCurrentPrescription()", ng-if="mostRecentPrescription && priorPrescription") View {{viewPriorPrescription ? 'Current' : 'Prior'}} Prescription
+                    div.previousPrescription(ng-if="mostRecentPrescription && !priorPrescription") No Prior Prescription
         div.row
             div.large-12.columns
                 div.content
