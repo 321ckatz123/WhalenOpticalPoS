@@ -7,7 +7,6 @@ angular.module('app.controllers')
                 fName: "Trevor",
                 lName: "Hawke",
                 address1: "123 Main St.",
-                address2: "Suite 200",
                 city: "Hollywood",
                 state: "CA",
                 zip: 12345,

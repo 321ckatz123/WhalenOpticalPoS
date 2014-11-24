@@ -1,11 +1,11 @@
 div.address
-    div.name {{$info.fName}} {{$info.lName}}
-    div {{$info.address1}}
-    div(ng-if="$info.address2") {{$info.address2}}
-    div {{$info.city}}, {{$info.state}} {{$info.zip}}
-    div.phone(ng-if="$info.phone")
+    div.name {{$address.fName}} {{$address.lName}}
+    div {{$address.address1}}
+    div(ng-if="$address.address2") {{$address.address2}}
+    div {{$address.city}}, {{$address.state}} {{$address.zip}}
+    div.phone(ng-if="$address.phone")
         strong p:
-        | &nbsp;{{$info.phone | phone}}
-    div(ng-if="$info.dob")
+        | &nbsp;{{$address.phone | phone}}
+    div(ng-if="$address.dob")
         strong dob:
-        | &nbsp;{{$info.dob | date:'MM/dd/yyyy'}}
+        | &nbsp;{{$address.dob | date:'MM/dd/yyyy'}}

@@ -1,17 +1,17 @@
-div.large-12(ng-repeat="order in orders")
-    div.content
-        div.header {{OrderDate}}
-        div.container
+div.content
+    div.header {{$order.dateOfSale | date:'MM/dd/yyyy'}}
+    div.container
+        div.row
             div.large-5.columns
-                include ../partials/address
+                div(ng-include, onload="$address = $order.information", src="'/address.html'")
             div.large-7.columns
-                include ../partials/prescription
-            div.large-12
-                div.header FRAME
-                div.container
-            div.large-12
-                include ../partials/lens
-            div.large-12
-                div.header NOTES
-                div.container
-                    textarea(rows=6)
+                div(ng-include, onload="$prescription = $order.prescription", src="'/prescription.html'")
+        div.large-12
+            div.header FRAME
+            div.container
+        div.large-12
+            include ../partials/lens
+        div.large-12
+            div.header NOTES
+            div.container
+                textarea(rows=6)
