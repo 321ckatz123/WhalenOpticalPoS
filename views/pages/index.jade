@@ -8,7 +8,7 @@ block content
                     input(type='text', placeholder='Search...')
         div.row
             div.large-5.columns
-                div.content
+                div.content.information
                     div.header MOST RECENT INFORMATION
                     div.container(ng-include, ng-if="mostRecentAddress" onload="$address = mostRecentAddress", src="'/address.html'")
                     div.container(ng-if="!mostRecentAddress") No previous orders

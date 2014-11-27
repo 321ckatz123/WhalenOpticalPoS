@@ -1,0 +1,21 @@
+.displayOrder .content .container.bill {
+  min-height: initial;
+
+  @media #{$large-up} {
+    min-height: 374px;
+  }
+}
+
+ul.bill {
+  list-style: none;
+  margin: 0;
+
+  li {
+    display: inline-block;
+    width: auto;
+
+    &.description {
+      width: 100px;
+    }
+  }
+}

@@ -6,6 +6,12 @@
   max-width: 1000px;
   background-color: $white;
 
+  &.information {
+    .container {
+      min-height: 174px;
+    }
+  }
+
   .header {
     background-color: $white;
     border: none;
@@ -15,9 +21,23 @@
     margin: 0;
     padding: 10px 20px;
     height: auto;
+
+    @media #{$small-only} {
+      padding: 10px 5px;
+    }
   }
+
   .container {
     padding: 10px 20px;
-    min-height: 195px;
+
+    @media #{$small-only} {
+      padding: 10px 5px;
+    }
+
+    .description {
+      font-style: normal;
+      font-weight: 700;
+      color: $blue-dark;
+    }
   }
 }

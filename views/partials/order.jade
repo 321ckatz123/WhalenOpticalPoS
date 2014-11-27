@@ -1,17 +1,85 @@
-div.content
-    div.header {{$order.dateOfSale | date:'MM/dd/yyyy'}}
+div.content.displayOrder
+    div.header ORDER FROM {{$order.dateOfSale | date:'MM/dd/yyyy'}}
     div.container
         div.row
             div.large-5.columns
-                div(ng-include, onload="$address = $order.information", src="'/address.html'")
+                div.content
+                    div.header INFORMATION
+                    div.container(ng-include, onload="$address = $order.information", src="'/address.html'")
             div.large-7.columns
-                div(ng-include, onload="$prescription = $order.prescription", src="'/prescription.html'")
-        div.large-12
-            div.header FRAME
-            div.container
-        div.large-12
-            include ../partials/lens
-        div.large-12
-            div.header NOTES
-            div.container
-                textarea(rows=6)
+                div.content(ng-class="{address2: $order.information.address2}")
+                    div.header PRESCRIPTION
+                    div.container.prescription(ng-include, onload="$prescription = $order.prescription", src="'/prescription.html'")
+        div.row
+            div.large-7.columns
+                div.content
+                    div.header LENS
+                    div.container.lens
+                        div
+                            div.medium-6.columns
+                                ul.lens
+                                    li.description Material
+                                    li {{$order.lens.material}}
+                            div.medium-6.columns
+                                ul.lens
+                                    li.description.option Option
+                                    li {{$order.lens.materialOption}}
+                        div
+                            div.medium-6.columns
+                                ul.lens
+                                    li.description Segment
+                                    li {{$order.lens.segment}}
+                            div.medium-6.columns(ng-if="$order.lens.segmentOption")
+                                ul.lens
+                                    li.description.option Option
+                                    li {{$order.lens.segmentOption}}
+                div.content
+                    div.header FRAME
+                    div.container.frame
+                        ul.frame
+                            li.description Name
+                            li {{$order.frame.name}}
+                        div
+                            div.medium-6.columns
+                                ul.frame
+                                    li.description Color
+                                    li {{$order.frame.color}}
+                            div.medium-6.columns
+                                ul.frame
+                                    li.description ED
+                                    li {{$order.frame.ed}}
+                        div.clearfix
+                            div.medium-6.columns
+                                ul.frame
+                                    li.description Lens Size
+                                    li {{$order.frame.lens}}
+                            div.medium-6.columns
+                                ul.frame
+                                    li.description Vertical
+                                    li {{$order.frame.vertical}}
+                        div.clearfix
+                            div.medium-6.columns
+                                ul.frame
+                                    li.description Bridge
+                                    li {{$order.frame.bridge}}
+                            div.medium-6.columns
+                                ul.frame
+                                    li.description Temple
+                                    li {{$order.frame.temple}}
+                div.content
+                    div.header NOTES
+                    div.container.notes {{$order.notes}}
+            div.large-5.columns
+                div.content
+                    div.header BILL
+                    div.container.bill
+                        ul.bill(ng-repeat="lineitem in $order.bill")
+                            li.description {{lineitem.name}}
+                            li {{lineitem.price | currency}}
+                        hr
+                        ul.bill
+                            li.description Tax (1%)
+                            li {{$order.tax | currency}}
+                        ul.bill
+                            li.description Total
+                            li {{$order.total | currency}}

@@ -1,0 +1,21 @@
+.displayOrder .content div.container.frame {
+  min-height: 70px;
+
+  .columns {
+    padding: 0;
+  }
+}
+
+ul.frame {
+  list-style: none;
+  margin: 0;
+
+  li {
+    display: inline-block;
+    width: auto;
+
+    &.description {
+      width: 70px;
+    }
+  }
+}

@@ -1,21 +1,32 @@
-.lens {
-  .header,
-  .container {
+.displayOrder .content div.container.lens {
+  min-height: 70px;
+
+  @media #{$small-only} {
+    min-height: 110px;
+  }
+
+  .columns {
     padding: 0;
-    margin: 0;
   }
+}
 
-  .container {
-    min-height: 35px;
-  }
+ul.lens {
+  list-style: none;
+  margin: 0;
+  width: 100%;
 
-  ul {
-    display: table;
-    list-style: none;
-    width: 100%;
+  li {
+    &.description {
+      width: 70px;
+    }
 
-    li {
-      display: table-cell;
+    display: inline-block;
+    width: auto;
+
+    @media #{$small-only} {
+      &.option {
+        padding-left: 10px;
+      }
     }
   }
 }

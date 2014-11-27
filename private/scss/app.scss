@@ -1,5 +1,5 @@
 // ensure our custom mixins are loaded
-//@import 'mixins';
+@import 'mixins';
 // load our settings first to make sure that the below settings files can make use of them
 @import 'settings/site';
 // normalize should be the first CSS being called to ensure everything works from a standard spot
@@ -20,3 +20,7 @@
 @import 'structure/prescription';
 @import 'structure/lens';
 @import 'structure/search';
+@import 'structure/notes';
+@import 'structure/frame';
+@import 'structure/bill';
+@import 'structure/order';
