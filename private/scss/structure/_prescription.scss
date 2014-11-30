@@ -1,10 +1,4 @@
-// in the order detail, if the information section has an address2, we have to make this a little bigger
-.address2 .container.prescription {
-  min-height: 174px;
-}
-
 .previousPrescription {
-
   &.prior {
     cursor: pointer;
   }
@@ -26,6 +20,9 @@ ul.prescription {
   li {
     &:first-of-type {
       width: 5%;
+      color: $blue-dark;
+      font-weight: 700;
+      font-style: italic;
     }
     &.pupillary {
       @include position(relative, 16px null null null);
@@ -39,6 +36,5 @@ ul.prescription {
     width: 19%;
     display: inline-block;
     text-align: center;
-    font-style: italic;
   }
 }

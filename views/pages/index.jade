@@ -24,5 +24,7 @@ block content
             div.large-12.columns
                 div.content
                     div.header ORDERS
+                        div.orderOptions
+                            a.icon.icon-plus(src="#", title="Create New Order")
                     div.container
                         div(ng-include, ng-repeat="order in orders", onload="$order = order", src="'/order.html'")

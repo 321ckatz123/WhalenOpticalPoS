@@ -184,12 +184,16 @@ angular.module('app.controllers')
                 "These are some notes. This is even a lot of notes. These are some notes. This is even a lot of notes."
             }];
 
-        // inject the tax paid and total.
+        // inject the tax paid and total
         angular.forEach(orders, function (order) {
+            // add all the line items together
             order.total = _.reduce(order.bill, function (total, lineItem) {
                 return total + (lineItem.price ? lineItem.price : 0);
             }, 0);
             order.tax = order.total * .01;
+
+            // default the orders to not expanded
+            order.expand = false;
         });
 
         orders = _.sortBy(orders, ['dateOfSale', 'id']).reverse();

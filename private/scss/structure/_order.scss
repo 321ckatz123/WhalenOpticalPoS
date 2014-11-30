@@ -1,6 +1,44 @@
+.orderOptions {
+  float: right;
+  font-size: 1.5em;
+  list-style-type: none;
+  margin-top: -5px;
+
+  a {
+    margin: 0 10px;
+    color: white;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &.expand {
+    float: left;
+    margin-left: 0;
+    margin-right: 10px;
+
+    a {
+      margin: 0;
+    }
+  }
+}
+
 .displayOrder {
-  > .header {
+  // in the order detail, if the information section has an address2, we have to make this a little bigger
+  .address2 .container.prescription {
+    min-height: 174px;
+  }
+
+  .container .header {
+    background-color: $teal;
+    color: $black;
+    cursor: default;
+  }
+
+  .header {
     background-color: $blue-dark;
     color: $white;
+    cursor: pointer;
   }
 }

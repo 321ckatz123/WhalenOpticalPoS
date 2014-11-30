@@ -12,6 +12,9 @@
 @import 'bourbon';
 // load the override after Bourbon as we are overriding some of it's mixins
 @import 'override';
+// import the custom fonts
+@import 'fonts/lineIcons';
+
 @import 'structure/shell';
 @import 'structure/login';
 @import 'structure/header';

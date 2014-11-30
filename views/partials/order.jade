@@ -1,6 +1,13 @@
 div.content.displayOrder
-    div.header ORDER FROM {{$order.dateOfSale | date:'MM/dd/yyyy'}}
-    div.container
+    div.header(ng-click="$order.expand = !$order.expand")
+        div.orderOptions.expand
+            a.icon(src="#", title="{{$order.expand ? 'Collapse' : 'Expand'}}", ng-class="{'icon-magnifier-add': !$order.expand, 'icon-magnifier-remove': $order.expand}")
+        span ORDER FROM {{$order.dateOfSale | date:'MM/dd/yyyy'}}
+        div.orderOptions
+            a.icon.icon-close(src="#", title="Delete")
+            a.icon.icon-pencil(src="#", title="Edit")
+            a.icon.icon-printer(src="#", title="Print Receipt")
+    div.container(ng-if="$order.expand")
         div.row
             div.large-5.columns
                 div.content

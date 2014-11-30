@@ -6,11 +6,11 @@ $cursive-family: "Alex Brush", cursive;
 // COLORS
 
 // blue palette
-$blue-light: #4196EC;
+$blue-light: #249AEF;
 $blue-light-accent: #4583C2;
 $blue: #001F63;
 $blue-dark: #001B5E;
-$teal: #05B8CC;
+$teal: rgba(#05B8CC, .9);
 
 // gray palette
 $gray-lightest: #E1E6EB;
@@ -32,3 +32,6 @@ $cream-accent: #F9FBFC;
 $cream-border: #DFECFA;
 $off-white: #FFFFE0;
 $off-white-accent: #DFE2E6;
+
+// green palette
+$dark-green: #249A24;

@@ -76,6 +76,7 @@ gulp.task('copy_public', function () {
 gulp.task('watch', function () {
     gulp.watch('private/scss/**/*.scss', ['sass']);
     gulp.watch('private/js/**/*.js', ['scripts']);
+    gulp.watch('public/**/*', ['copy_public']);
 });
 
 gulp.task('deploy', ['sass', 'scripts', 'copy_public']);
