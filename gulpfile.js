@@ -44,7 +44,6 @@ gulp.task('scripts', ['scripts_clean'], function () {
     return gulp.src([
         'bower_components/angular/angular.js',
         'bower_components/angular-route/angular-route.js',
-        'bower_components/angular-animate/angular-animate.js',
         'bower_components/angular-foundation/mm-foundation-tpls.js',
         'bower_components/moment/moment.js',
         'bower_components/lodash/dist/lodash.js',
