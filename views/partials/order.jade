@@ -1,25 +1,25 @@
-div.content.displayOrder
-    div.header(ng-click="$order.expand = !$order.expand")
+div.content.displayOrder(id="{{$order.id}}")
+    div#overallHeader.header(ng-click="$order.expand = !$order.expand")
         div.orderOptions.expand
             a.icon(src="#", title="{{$order.expand ? 'Collapse' : 'Expand'}}", ng-class="{'icon-magnifier-add': !$order.expand, 'icon-magnifier-remove': $order.expand}")
         span ORDER FROM {{$order.dateOfSale | date:'MM/dd/yyyy'}}
-        div.orderOptions
+        div.orderOptions(ng-click="$event.stopPropagation()")
             a.icon.icon-close(src="#", title="Delete")
             a.icon.icon-pencil(src="#", title="Edit")
-            a.icon.icon-printer(src="#", title="Print Receipt")
-    div.container(ng-if="$order.expand")
+            a.icon.icon-printer(src="#", title="Print Receipt", ng-click="printReceipt($order);")
+    div.container.hide(ng-class="{'show':$order.expand}")
         div.row
-            div.large-5.columns
+            div#information.large-5.columns
                 div.content
                     div.header INFORMATION
                     div.container(ng-include, onload="$address = $order.information", src="'/address.html'")
-            div.large-7.columns
+            div#prescription.large-7.columns
                 div.content(ng-class="{address2: $order.information.address2}")
                     div.header PRESCRIPTION
                     div.container.prescription(ng-include, onload="$prescription = $order.prescription", src="'/prescription.html'")
         div.row
             div.large-7.columns
-                div.content
+                div#lens.content
                     div.header LENS
                     div.container.lens
                         div
@@ -40,7 +40,7 @@ div.content.displayOrder
                                 ul.lens
                                     li.description.option Option
                                     li {{$order.lens.segmentOption}}
-                div.content
+                div#frame.content
                     div.header FRAME
                     div.container.frame
                         ul.frame
@@ -51,11 +51,11 @@ div.content.displayOrder
                                 ul.frame
                                     li.description Color
                                     li {{$order.frame.color}}
-                            div.medium-6.columns
+                            div.medium-6.columns.printHide
                                 ul.frame
                                     li.description ED
                                     li {{$order.frame.ed}}
-                        div.clearfix
+                        div.clearfix.printHide
                             div.medium-6.columns
                                 ul.frame
                                     li.description Lens Size
@@ -64,7 +64,7 @@ div.content.displayOrder
                                 ul.frame
                                     li.description Vertical
                                     li {{$order.frame.vertical}}
-                        div.clearfix
+                        div.clearfix.printHide
                             div.medium-6.columns
                                 ul.frame
                                     li.description Bridge
@@ -73,10 +73,10 @@ div.content.displayOrder
                                 ul.frame
                                     li.description Temple
                                     li {{$order.frame.temple}}
-                div.content
+                div#notes.content
                     div.header NOTES
                     div.container.notes {{$order.notes}}
-            div.large-5.columns
+            div#bill.large-5.columns
                 div.content
                     div.header BILL
                     div.container.bill

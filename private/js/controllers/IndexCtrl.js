@@ -1,5 +1,5 @@
 angular.module('app.controllers')
-    .controller('IndexCtrl', ['$scope', function ($scope) {
+    .controller('IndexCtrl', ['$scope', '$window', function ($scope, $window) {
         var orders = [{
             id: 1,
             dateOfSale: new Date("01/02/2014"),
@@ -208,5 +208,30 @@ angular.module('app.controllers')
 
         $scope.changeCurrentPrescription = function () {
             $scope.viewPriorPrescription = !$scope.viewPriorPrescription;
+        };
+
+        $scope.printReceipt = function (order) {
+            var printDiv = document.getElementById('print');
+            var orderDiv = document.getElementById(order.id);
+
+            printDiv.appendChild(orderDiv.cloneNode(true));
+
+            var afterPrint = function () {
+                // clean the print section before adding new content
+                printDiv.innerHTML = '';
+            };
+            $window.onafterprint = afterPrint;
+
+            // add support for Chrome
+            if ($window.matchMedia) {
+                var mediaQueryList = $window.matchMedia('print');
+                mediaQueryList.addListener(function(mql) {
+                    if (!mql.matches) {
+                        afterPrint();
+                    }
+                });
+            }
+
+            $window.print();
         };
     }]);

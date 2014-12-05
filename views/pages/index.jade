@@ -1,30 +1,38 @@
 extends ../layout
 
 block content
-    div.index(ng-controller="IndexCtrl")
-        div.row
-            div.large-12.columns
-                div.content.search
-                    input(type='text', placeholder='Search...')
-        div.row
-            div.large-5.columns
-                div.content.information
-                    div.header MOST RECENT INFORMATION
-                    div.container(ng-include, ng-if="mostRecentAddress" onload="$address = mostRecentAddress", src="'/address.html'")
-                    div.container(ng-if="!mostRecentAddress") No previous orders
-            div.large-7.columns
-                div.content
-                    div.header {{viewPriorPrescription ? 'PREVIOUS' : 'MOST RECENT'}} PRESCRIPTION
-                    div.container.prescription(ng-include, ng-if="mostRecentPrescription && !viewPriorPrescription", onload="$prescription = mostRecentPrescription", src="'/prescription.html'")
-                    div.container.prescription(ng-include, ng-if="mostRecentPrescription && viewPriorPrescription", onload="$prescription = priorPrescription", src="'/prescription.html'")
-                    div.container.prescription(ng-if="!mostRecentPrescription") No previous prescriptions
-                    div.previousPrescription.prior(ng-click="changeCurrentPrescription()", ng-if="mostRecentPrescription && priorPrescription") View {{viewPriorPrescription ? 'Current' : 'Prior'}} Prescription
-                    div.previousPrescription(ng-if="mostRecentPrescription && !priorPrescription") No Prior Prescription
-        div.row
-            div.large-12.columns
-                div.content
-                    div.header ORDERS
-                        div.orderOptions
-                            a.icon.icon-plus(src="#", title="Create New Order")
-                    div.container
-                        div(ng-include, ng-repeat="order in orders", onload="$order = order", src="'/order.html'")
+    div(ng-controller="IndexCtrl")
+        div.print
+            div.content
+                ul.printHeader
+                    li Telphone # 815-395-1820
+                    li Fax # 815-395-9135
+                    li Tax ID # 36-3648772
+            div#print.container
+        div.index.noPrint
+            div.row
+                div.large-12.columns
+                    div.content.search
+                        input(type='text', placeholder='Search...')
+            div.row
+                div.large-5.columns
+                    div.content.information
+                        div.header MOST RECENT INFORMATION
+                        div.container(ng-include, ng-if="mostRecentAddress" onload="$address = mostRecentAddress", src="'/address.html'")
+                        div.container(ng-if="!mostRecentAddress") No previous orders
+                div.large-7.columns
+                    div.content
+                        div.header {{viewPriorPrescription ? 'PREVIOUS' : 'MOST RECENT'}} PRESCRIPTION
+                        div.container.prescription(ng-include, ng-if="mostRecentPrescription && !viewPriorPrescription", onload="$prescription = mostRecentPrescription", src="'/prescription.html'")
+                        div.container.prescription(ng-include, ng-if="mostRecentPrescription && viewPriorPrescription", onload="$prescription = priorPrescription", src="'/prescription.html'")
+                        div.container.prescription(ng-if="!mostRecentPrescription") No previous prescriptions
+                        div.previousPrescription.prior(ng-click="changeCurrentPrescription()", ng-if="mostRecentPrescription && priorPrescription") View {{viewPriorPrescription ? 'Current' : 'Prior'}} Prescription
+                        div.previousPrescription(ng-if="mostRecentPrescription && !priorPrescription") No Prior Prescription
+            div.row
+                div.large-12.columns
+                    div.content
+                        div.header ORDERS
+                            div.orderOptions
+                                a.icon.icon-plus(src="#", title="Create New Order")
+                        div.container
+                            div(ng-include, ng-repeat="order in orders", onload="$order = order", src="'/order.html'")
