@@ -16,7 +16,6 @@ gulp.task('sass_clean', function (cb) {
 });
 gulp.task('sass', ['sass_clean'], function () {
     return gulp.src([
-        'bower_components/angular-carousel/angular-carousel.css',
         'private/scss/app.scss'
     ])
         .pipe(require('gulp-sass')({
@@ -51,7 +50,9 @@ gulp.task('scripts', ['scripts_clean'], function () {
         'private/js/filters/app.filters.js',
         'private/js/filters/Phone.js',
         'private/js/controllers/app.controllers.js',
-        'private/js/controllers/IndexCtrl.js'
+        'private/js/controllers/IndexCtrl.js',
+        'private/js/controllers/SearchCtrl.js',
+        'private/js/controllers/PersonCtrl.js'
     ])
         .pipe(concat('app.js'))
         //.pipe(replace(_gulpTokenReplaceOptions))

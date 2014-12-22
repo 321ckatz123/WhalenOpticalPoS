@@ -14,7 +14,6 @@ app.set('port', process.env.PORT);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.set('title', 'Whalen Optical');
-app.use(require('connect-flash')());
 
 // configure express sessions
 var session = require('express-session');
@@ -47,10 +46,6 @@ app.use(function (err, req, res, next) {
         message: err.message
     });
 });
-
-// configure logging
-var morgan = require('morgan');
-app.use(morgan(process.env.LOGOUTPUT));
 
 // parse application/json && application/x-www-form-urlencoded
 var bodyParser = require('body-parser');
@@ -128,5 +123,5 @@ app.use("/", function (req, res, next) {
     //    res.render('index', {title: 'Whalen Optical'});
     //}
     //res.redirect('/login');
-    res.render('pages/index', {title: 'Whalen Optical'});
+    res.render('pages/person', {title: 'Whalen Optical'});
 });

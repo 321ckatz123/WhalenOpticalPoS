@@ -1,45 +1,45 @@
-.header {
-  width: 100%;
-  height: 78px;
+#header {
+  @include size(100% 75px);
+  line-height: 110%;
   border-bottom: solid 3px $black;
-  margin: 0 0 20px 0;
   background-color: $teal;
-  font-size: 16px;
+  text-align: center;
+  font-size: 500%;
+  font-family: $cursive-family;
+  margin-bottom: 15px;
 
   @media #{$small-only} {
-    height: 58px;
-  }
-
-  .logo {
-    max-width: 1000px;
-    margin: 0 auto;
-    font-size: 500%;
-    font-family: $cursive-family;
-    text-align: center;
-    position: relative;
-    top: -20px;
-
-    @media #{$small-only} {
-      font-size: 200%;
-      top: 6px;
-    }
-
-    img {
-      position: relative;
-      top: -10px;
-
-      @media #{$small-only} {
-        top: -4px;
-      }
-    }
-
-    span {
-      &:first-child {
-        margin-right: 20px;
-      }
-      &:last-child {
-        margin-left: 20px;
-      }
-    }
+    height: 47px;
+    font-size: 200%;
+    line-height: 180%;
   }
 }
+
+  img {
+    @include size(64px 48px);
+    position: relative;
+    top: -6px;
+
+    @media #{$small-only} {
+      @include size(48px 36px);
+      top: -4px;
+    }
+  }
+
+  span {
+    &:first-child {
+      margin-right: 20px;
+    }
+    &:last-child {
+      margin-left: 20px;
+    }
+
+    @media #{$small-only} {
+      &:first-child {
+        margin-right: 10px;
+      }
+      &:last-child {
+        margin-left: 10px;
+      }
+    }
+  }
