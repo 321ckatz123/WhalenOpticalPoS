@@ -1,0 +1,12 @@
+#index {
+  .content {
+    text-align: center;
+    padding: 40px;
+    color: $gray-lightest;
+    cursor: pointer;
+
+    .icon {
+      font-size: 10em;
+    }
+  }
+}
