@@ -1,9 +1,12 @@
 extends ../layout
 
 block content
-    include ../partials/search
-
-    div#index.row
+    div.row
         div.large-12.columns
-            div.content
+            include ../partials/search
+
+    div#index.row(ng-controller="PersonCreateCtrl")
+        div.large-12.columns
+            div.content(ng-click="redirectToCreate()")
                 div.icon.icon-user-follow
+                div.text Create New Person

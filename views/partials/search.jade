@@ -1,4 +1,3 @@
-div#search.row.noPrint(ng-controller="SearchCtrl")
-    div.large-12.columns
-        div.content.search
-            input(type='text', placeholder='Search...')
+div#search.noPrint(ng-controller="SearchCtrl")
+    div.content.search(ng-click="redirectToSearch()")
+        input(type='text', placeholder='Search...', ng-click="$event.stopPropagation()", ng-model="searchValue", ng-keyup="$event.keyCode == 13 && redirectToSearch()")

@@ -1,7 +1,6 @@
 .search {
-  display: table;
-  height: 36px;
-  width: 100%;
+  @include size(100% 36px);
+
   padding-right: 36px;
   background: url('/img/search.png') top right no-repeat;
   cursor: pointer;

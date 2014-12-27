@@ -1,0 +1,16 @@
+#newPerson {
+  cursor: pointer;
+  height: 36px;
+  line-height: 36px;
+  color: $gray-lighter;
+  width: 190px;
+
+  .icon {
+    padding: 10px 0 0 10px;
+
+    .text {
+      font-family: $sans-family;
+      padding-left: 10px;
+    }
+  }
+}

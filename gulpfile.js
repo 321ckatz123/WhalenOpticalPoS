@@ -52,7 +52,8 @@ gulp.task('scripts', ['scripts_clean'], function () {
         'private/js/controllers/app.controllers.js',
         'private/js/controllers/IndexCtrl.js',
         'private/js/controllers/SearchCtrl.js',
-        'private/js/controllers/PersonCtrl.js'
+        'private/js/controllers/PersonCtrl.js',
+        'private/js/controllers/PersonCreateCtrl.js'
     ])
         .pipe(concat('app.js'))
         //.pipe(replace(_gulpTokenReplaceOptions))
