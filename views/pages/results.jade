@@ -7,6 +7,7 @@ block content
         div.row.searchResult(ng-repeat="result in searchResults", ng-click="redirectToPersonDetail(result.id)")
             div.columns
                 div.content
+                    div.header {{result.information.fName.toUpperCase()}} {{result.information.lName.toUpperCase()}} - LAST SALE ON {{result.dateOfLastSale | date:'MM/dd/yyyy'}}
                     div.large-5.innerContent.columns
                         div.content
                             div.header CURRENT INFORMATION

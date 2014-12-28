@@ -17,8 +17,21 @@
 .searchResult {
   cursor: pointer;
 
+  .header {
+    background-color: $blue-dark;
+    color: $white;
+    font-size: 1.1em;
+  }
+
   .innerContent {
     margin-top: .9375rem;
+
+    .header {
+      background-color: $teal;
+      color: $black;
+      cursor: default;
+      font-size: 1em;
+    }
 
     .content {
       .container {
