@@ -26,7 +26,7 @@ block content
                         div.container.prescription(ng-if="!person.mostRecentPrescription") No previous prescriptions
                         div.previousPrescription.prior(ng-click="changeCurrentPrescription()", ng-if="person.mostRecentPrescription && person.priorPrescription") View {{person.viewPriorPrescription ? 'Current' : 'Prior'}} Prescription
                         div.previousPrescription(ng-if="person.mostRecentPrescription && !person.priorPrescription") No Prior Prescription
-            div.row
+            div#orders.row
                 div.large-12.columns
                     div.content
                         div.header ORDERS

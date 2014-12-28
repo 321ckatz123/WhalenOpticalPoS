@@ -13,3 +13,17 @@
     cursor: initial;
   }
 }
+
+.searchResult {
+  cursor: pointer;
+
+  .innerContent {
+    margin-top: .9375rem;
+
+    .content {
+      .container {
+        min-height: 180px;
+      }
+    }
+  }
+}

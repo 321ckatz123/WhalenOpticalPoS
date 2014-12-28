@@ -52,6 +52,7 @@ gulp.task('scripts', ['scripts_clean'], function () {
         'private/js/controllers/app.controllers.js',
         'private/js/controllers/IndexCtrl.js',
         'private/js/controllers/SearchCtrl.js',
+        'private/js/controllers/SearchResultsCtrl.js',
         'private/js/controllers/PersonCtrl.js',
         'private/js/controllers/PersonCreateCtrl.js'
     ])

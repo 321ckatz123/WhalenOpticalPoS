@@ -3,6 +3,15 @@ extends ../layout
 block content
     include ../partials/subheader
 
-    div.row
-        div.columns
-            div.large-12.content SEARCH
+    div(ng-controller="SearchResultsCtrl")
+        div.row.searchResult(ng-repeat="result in searchResults", ng-click="redirectToPersonDetail(result.id)")
+            div.columns
+                div.content
+                    div.large-5.innerContent.columns
+                        div.content
+                            div.header CURRENT INFORMATION
+                            div.container(ng-include, onload="$address = result.information", src="'/address.html'")
+                    div.large-7.innerContent.columns
+                        div.content
+                            div.header CURRENT PRESCRIPTION
+                            div.container(ng-include, onload="$prescription = result.prescription", src="'/prescription.html'")

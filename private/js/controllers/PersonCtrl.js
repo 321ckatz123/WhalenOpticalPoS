@@ -1,39 +1,39 @@
 angular.module('app.controllers')
-    .controller('PersonCtrl', ['$scope', '$window', function ($scope, $window) {
-        // TODO: ACTUALLY get someone
-        function getCurrentPerson(id) {
-            $scope.person = tempPeople[0];
-            appendOrderInformation();
-        }
+    .controller('PersonCtrl', ['$scope', '$window', '$http', function ($scope, $window, $http) {
+        $http.get($window.location.pathname + '.json').
+            success(function (data) {
+                $scope.person = data;
 
-        function appendOrderInformation() {
-            var orders = $scope.person.orders;
+                var orders = $scope.person.orders;
+                if (orders) {
+                    // inject the tax paid and total
+                    angular.forEach(orders, function (order) {
+                        // add all the line items together
+                        order.total = _.reduce(order.bill, function (total, lineItem) {
+                            return total + (lineItem.price ? lineItem.price : 0);
+                        }, 0);
+                        order.tax = order.total * .01;
 
-            if (orders) {
-                // inject the tax paid and total
-                angular.forEach(orders, function (order) {
-                    // add all the line items together
-                    order.total = _.reduce(order.bill, function (total, lineItem) {
-                        return total + (lineItem.price ? lineItem.price : 0);
-                    }, 0);
-                    order.tax = order.total * .01;
+                        // default the orders to not expanded
+                        order.expand = false;
+                    });
 
-                    // default the orders to not expanded
-                    order.expand = false;
-                });
+                    // sort the orders by date of last sale (then by ID on the off chance there are two orders)
+                    orders = _.sortBy(orders, ['dateOfSale', 'id']).reverse();
+                    $scope.person.orders = orders;
 
-                // sort the orders by date of last sale (then by ID on the off chance there are two orders)
-                orders = _.sortBy(orders, ['dateOfSale', 'id']).reverse();
-                $scope.person.orders = orders;
-
-                var mostRecentOrder = _.first(orders);
-                var secondMostRecentOrder = _.first(_.at(orders, 1));
-                $scope.person.viewPriorPrescription = false;
-                $scope.person.mostRecentAddress = mostRecentOrder.information;
-                $scope.person.mostRecentPrescription = mostRecentOrder.prescription;
-                $scope.person.priorPrescription = secondMostRecentOrder ? secondMostRecentOrder.prescription : null;
-            }
-        }
+                    var mostRecentOrder = _.first(orders);
+                    var secondMostRecentOrder = _.first(_.at(orders, 1));
+                    $scope.person.viewPriorPrescription = false;
+                    $scope.person.mostRecentAddress = mostRecentOrder.information;
+                    $scope.person.mostRecentPrescription = mostRecentOrder.prescription;
+                    $scope.person.priorPrescription = secondMostRecentOrder ? secondMostRecentOrder.prescription : null;
+                }
+            }).
+            error(function (data, status, headers, config) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+            });
 
         $scope.changeCurrentPrescription = function () {
             $scope.person.viewPriorPrescription = !$scope.person.viewPriorPrescription;
@@ -63,7 +63,4 @@ angular.module('app.controllers')
 
             $window.print();
         };
-
-        // TODO: get this out of route
-        getCurrentPerson(1);
     }]);
