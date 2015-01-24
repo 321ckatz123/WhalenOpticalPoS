@@ -4,15 +4,16 @@ block content
     include ../partials/subheader
 
     div(ng-controller="SearchResultsCtrl")
-        div.row.searchResult(ng-repeat="result in searchResults", ng-click="redirectToPersonDetail(result.id)")
+        div.row.searchResult(ng-repeat="result in searchResults")
             div.columns
-                div.content
-                    div.header {{result.information.fName.toUpperCase()}} {{result.information.lName.toUpperCase()}} - LAST SALE ON {{result.dateOfLastSale | date:'MM/dd/yyyy'}}
-                    div.large-5.innerContent.columns
-                        div.content
-                            div.header CURRENT INFORMATION
-                            div.container(ng-include, onload="$address = result.information", src="'/address.html'")
-                    div.large-7.innerContent.columns
-                        div.content
-                            div.header CURRENT PRESCRIPTION
-                            div.container(ng-include, onload="$prescription = result.prescription", src="'/prescription.html'")
+                a(href="/person/{{result.id}}")
+                    div.content
+                        div.header {{result.information.fName.toUpperCase()}} {{result.information.lName.toUpperCase()}} - LAST SALE ON {{result.dateOfLastSale | date:'MM/dd/yyyy'}}
+                        div.large-5.innerContent.columns
+                            div.content
+                                div.header CURRENT INFORMATION
+                                div.container(ng-include, onload="$address = result.information", src="'/address.html'")
+                        div.large-7.innerContent.columns
+                            div.content
+                                div.header CURRENT PRESCRIPTION
+                                div.container(ng-include, onload="$prescription = result.prescription", src="'/prescription.html'")

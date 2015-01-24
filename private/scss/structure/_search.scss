@@ -17,6 +17,13 @@
 .searchResult {
   cursor: pointer;
 
+  a:link,
+  a:visited,
+  a:hover,
+  a:active {
+    color: $black;
+  }
+
   .header {
     background-color: $blue-dark;
     color: $white;
@@ -29,7 +36,6 @@
     .header {
       background-color: $teal;
       color: $black;
-      cursor: default;
       font-size: 1em;
     }
 
