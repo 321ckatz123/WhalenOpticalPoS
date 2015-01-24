@@ -1,0 +1,132 @@
+div#newOrder.row
+    div.large-12.columns
+        div.header NEW ORDER
+        div.container
+            div.row
+                div.columns.large-6
+                    div.content
+                        div.header ADDRESS
+                        div.container.clearfix
+                            div.row
+                                div.medium-6.columns
+                                    label First Name
+                                        input(type="text", ng-model="firstName")  
+                                div.medium-6.columns
+                                    label Last Name
+                                        input(type="text", ng-model="lastName")  
+                            div.row
+                                div.medium-12.columns
+                                    label Address 1
+                                        input(type="text", ng-model="address1")  
+                            div.row
+                                div.medium-12.columns
+                                    label Address 2
+                                        input(type="text", ng-model="address2")  
+                            div.row
+                                div.medium-6.columns
+                                    label City
+                                        input(type="text", ng-model="city")  
+                                div.medium-3.columns
+                                    label State
+                                        select(ng-model="state") 
+                                            option(value="AK") AK
+                                            option(value="AL") AL
+                                            option(value="AR") AR
+                                            option(value="AZ") AZ
+                                            option(value="CA") CA
+                                            option(value="CO") CO
+                                            option(value="CT") CT
+                                            option(value="DC") DC
+                                            option(value="DE") DE
+                                            option(value="FL") FL
+                                            option(value="GA") GA
+                                            option(value="HI") HI
+                                            option(value="IA") IA
+                                            option(value="ID") ID
+                                            option(value="IL") IL
+                                            option(value="IN") IN
+                                            option(value="KS") KS
+                                            option(value="KY") KY
+                                            option(value="LA") LA
+                                            option(value="MA") MA
+                                            option(value="MD") MD
+                                            option(value="ME") ME
+                                            option(value="MI") MI
+                                            option(value="MN") MN
+                                            option(value="MO") MO
+                                            option(value="MS") MS
+                                            option(value="MT") MT
+                                            option(value="NC") NC
+                                            option(value="ND") ND
+                                            option(value="NE") NE
+                                            option(value="NH") NH
+                                            option(value="NJ") NJ
+                                            option(value="NM") NM
+                                            option(value="NV") NV
+                                            option(value="NY") NY
+                                            option(value="OH") OH
+                                            option(value="OK") OK
+                                            option(value="OR") OR
+                                            option(value="PA") PA
+                                            option(value="RI") RI
+                                            option(value="SC") SC
+                                            option(value="SD") SD
+                                            option(value="TN") TN
+                                            option(value="TX") TX
+                                            option(value="UT") UT
+                                            option(value="VA") VA
+                                            option(value="VT") VT
+                                            option(value="WA") WA
+                                            option(value="WI") WI
+                                            option(value="WV") WV
+                                            option(value="WY") WY
+                                div.medium-3.columns
+                                    label Zip Code
+                                        input(type="text", ng-model="zipCode") 
+                div.columns.large-6
+                    div.content
+                        div.header PRESCRIPTION
+                        div.container.clearfix
+                            ul.prescription.description
+                                li
+                                li Sphere
+                                li Cylinder
+                                li Axis
+                                li Prism
+                                li Base
+                            ul.prescription
+                                li R
+                                li
+                                    input(type="text", ng-model="prescription.right.sphere")
+                                li
+                                    input(type="text", ng-model="prescription.right.cylinder")
+                                li
+                                    input(type="text", ng-model="prescription.right.axis")
+                                li
+                                    input(type="text", ng-model="prescription.right.prism")
+                                li
+                                    input(type="text", ng-model="prescription.right.base")
+                            ul.prescription
+                                li L
+                                li
+                                    input(type="text", ng-model="prescription.left.sphere")
+                                li
+                                    input(type="text", ng-model="prescription.left.cylinder")
+                                li
+                                    input(type="text", ng-model="prescription.left.axis")
+                                li
+                                    input(type="text", ng-model="prescription.left.prism")
+                                li
+                                    input(type="text", ng-model="prescription.left.base")
+                            ul.prescription
+                                li R
+                                li
+                                    input(type="text", ng-model="prescription.right.reading")
+                                li.pupillary.description Pupillary Distance
+                                li.pupillary
+                                    input(type="text", ng-model="prescription.pd")
+                                li.pupillaryUnit mm
+                            ul.prescription
+                                li L
+                                li
+                                    input(type="text", ng-model="prescription.left.reading")
