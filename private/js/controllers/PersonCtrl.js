@@ -13,6 +13,7 @@ angular.module('app.controllers')
                             return total + (lineItem.price ? lineItem.price : 0);
                         }, 0);
                         order.tax = order.total * .01;
+                        order.total += order.tax;
 
                         // default the orders to not expanded
                         order.expand = false;

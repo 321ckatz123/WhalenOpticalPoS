@@ -8,6 +8,46 @@
     color: #000;
   }
 
+  .error {
+    color: red;
+    font-size: .875em;
+    background-color: $white;
+  }
+
+  .bill {
+    min-height: 501px;
+
+    .icon-close {
+      font-size: 1.5em;
+      margin-top: 5px;
+      display: block;
+    }
+  }
+
+  #newLineItem {
+    cursor: pointer;
+    height: 36px;
+    line-height: 36px;
+    color: $gray-lighter;
+
+    .icon {
+      padding: 10px 0 0 64px;
+
+      .text {
+        font-family: $sans-family;
+        padding-left: 10px;
+      }
+    }
+  }
+
+  label.description {
+    font-size: 1em;
+  }
+
+  .prescriptionContainer {
+    min-height: 357px;
+  }
+
   ul.prescription {
     padding-top: 34px;
 
@@ -34,6 +74,20 @@
       position: relative;
       top: 27px;
       left: -10px;
+    }
+  }
+
+  textarea {
+    margin-bottom: 0;
+  }
+
+  .submit {
+    line-height: 1;
+
+    button {
+      display: block;
+      margin-bottom: 0;
+      width: 100%;
     }
   }
 }
