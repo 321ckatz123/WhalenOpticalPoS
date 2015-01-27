@@ -24,6 +24,12 @@
     color: $black;
   }
 
+  .notice {
+    text-align: center;
+    font-size: 2em;
+    cursor: default;
+  }
+
   .header {
     background-color: $blue-dark;
     color: $white;

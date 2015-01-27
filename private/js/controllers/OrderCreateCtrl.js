@@ -1,5 +1,5 @@
 angular.module('app.controllers')
-    .controller('OrderCreateCtrl', ['$scope', function ($scope) {
+    .controller('OrderCreateCtrl', ['$scope', '$window', '$http', function ($scope, $window, $http) {
         /*{
          id: 1,
          dateOfSale: new Date("01/02/2014"),
@@ -100,6 +100,14 @@ angular.module('app.controllers')
 
         // TODO: set the material correctly on save
         $scope.submitOrder = function() {
+            var tempOrder = $scope.order;
 
+            $http.post('/person/new', tempOrder).
+                success(function (data) {
+                    $window.location.href = "/person/" + data.id.toString();
+                }).
+                error(function (data) {
+                    $window.alert(data);
+                });
         };
     }]);

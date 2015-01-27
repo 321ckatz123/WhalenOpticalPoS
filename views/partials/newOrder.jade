@@ -204,8 +204,8 @@ form#newOrder(name="newOrder", ng-submit="submitOrder()", novalidate)
                             div.container.clearfix
                                 div.row
                                     div.medium-12.columns
-                                        label.description(for="frameName") Name
-                                        input#frameName(type="text", ng-model="order.frame.name")
+                                        label.description(for="frame") Name
+                                        input#frame(type="text", ng-model="order.frame.name")
                                 div.row
                                     div.medium-6.columns
                                         label.description(for="frameColor") Color
@@ -273,4 +273,4 @@ form#newOrder(name="newOrder", ng-submit="submitOrder()", novalidate)
                                 textarea(ng-model="order.notes")
                 div.row.submit
                     div.columns.large-12
-                        button.button.radius(type="submit", ng-disabled="newOrder.$invalid") Add New Order
+                        button.button.radius(type="submit", ng-disabled="newOrder.$invalid", ng-click="submitOrder()") Add New Order

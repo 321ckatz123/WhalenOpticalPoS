@@ -3,10 +3,16 @@ extends ../layout
 block content
     include ../partials/subheader
 
-    div(ng-controller="SearchResultsCtrl")
-        div.row.searchResult(ng-repeat="result in searchResults")
+    div.searchResult(ng-controller="SearchResultsCtrl")
+        div.row(ng-if="needSearch")
+            div.notice.columns
+                div.content Please enter search criteria
+        div.row(ng-if="searchResults.length === 0")
+            div.notice.columns(ng-if="searchResults.length === 0")
+                    div.content No existing orders matched search criteria
+        div.row(ng-repeat="result in searchResults")
             div.columns
-                a(href="/person/{{result.id}}")
+                a(href="/person/{{result._id}}" target="_self")
                     div.content
                         div.header {{result.information.fName.toUpperCase()}} {{result.information.lName.toUpperCase()}} - LAST SALE ON {{result.dateOfLastSale | date:'MM/dd/yyyy'}}
                         div.large-5.innerContent.columns

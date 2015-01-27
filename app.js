@@ -19,6 +19,15 @@ app.set('title', 'Whalen Optical');
 var favicon = require('serve-favicon');
 app.use(favicon(path.join(__dirname, 'public', 'img', 'favicon.ico')));
 
+// add in mongo for db access
+require('mongodb');
+var monk = require('monk');
+var db = monk('localhost:27017/WhalenOpticalPoS');
+app.use(function(req,res,next){
+    req.db = db;
+    next();
+});
+
 // configure error handling
 app.use(function (err, req, res, next) {
     var code = err.status || err.code || 500;
@@ -44,5 +53,6 @@ app.use(compression());
 http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
 });
+
 
 require("./routes")(express, app);
