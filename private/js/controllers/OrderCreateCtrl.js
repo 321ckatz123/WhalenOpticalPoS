@@ -1,71 +1,11 @@
 angular.module('app.controllers')
     .controller('OrderCreateCtrl', ['$scope', '$window', '$http', function ($scope, $window, $http) {
-        /*{
-         id: 1,
-         dateOfSale: new Date("01/02/2014"),
-         notes: "These are some notes. This is even a lot of notes. These are some notes. " +
-         "This is even a lot of notes. These are some notes. This is even a lot of notes. " +
-         "These are some notes. This is even a lot of notes. These are some notes. This is even a lot of notes."
-         information: {
-         fName: "Trevor",
-         lName: "Hawke",
-         address1: "123 Main St.",
-         address2: "Suite 200",
-         city: "Hollywood",
-         state: "CA",
-         zip: 12345,
-         phone: "1234567890",
-         dob: new Date("10/25/1995")
-         },
-         prescription: {
-         pd: "58",
-         right: {
-         sphere: "-4",
-         cylinder: "-.5",
-         axis: "180",
-         prism: ".5",
-         base: "down",
-         reading: "+2"
-         },
-         left: {
-         sphere: "-3",
-         cylinder: "-1",
-         axis: "90",
-         prism: "1.5",
-         base: "up",
-         reading: "-2"
-         }
-         },
-         lens: {
-         material: "Glass",
-         materialOption: "Extra Active",
-         segment: "Single"
-         },
-         frame: {
-         name: "Oakley",
-         color: "Gray",
-         lens: "52",
-         ed: "80",
-         vertical: "24",
-         bridge: "18",
-         temple: "130"
-         },
-         bill: [
-         {
-         name: "Lens",
-         price: 99.99
-         },
-         {
-         name: "Frame",
-         price: 299.99
-         }
-         ]
-         }*/
 
         // add in the defaults
         $scope.order = {
             lens: {
                 material: "Plastic",
+                nonGlassMaterialOption: "None",
                 segment: "Single"
             },
             bill: [
@@ -99,10 +39,41 @@ angular.module('app.controllers')
         $scope.updateBill();
 
         // TODO: set the material correctly on save
-        $scope.submitOrder = function() {
+        $scope.submitOrder = function () {
             var tempOrder = $scope.order;
+            tempOrder.id = 1;
+            tempOrder.dateOfSale = new Date();
 
-            $http.post('/person/new', tempOrder).
+            if (tempOrder.lens.material === "Glass") {
+                tempOrder.lens.materialOption = tempOrder.lens.glassMaterialOption;
+            }
+            else {
+                tempOrder.lens.materialOption = tempOrder.lens.nonGlassMaterialOption;
+            }
+
+            delete tempOrder.lens.glassMaterialOption;
+            delete tempOrder.lens.nonGlassMaterialOption;
+
+            if(tempOrder.lens.segment === "Bifocal") {
+                tempOrder.lens.segmentOption = tempOrder.lens.bifocalSegmentOption;
+            }
+            else if(tempOrder.lens.segment === "Trifocal") {
+                tempOrder.lens.segmentOption = tempOrder.lens.trifocalSegmentOption;
+            }
+
+            delete tempOrder.lens.bifocalSegmentOption;
+            delete tempOrder.lens.trifocalSegmentOption;
+
+            delete tempOrder.total;
+            delete tempOrder.tax;
+
+            var newOrder = {
+                fName: $scope.order.information.fName,
+                lName: $scope.order.information.lName,
+                orders: [angular.fromJson(angular.toJson(tempOrder))]
+            };
+
+            $http.post('/person/new', newOrder).
                 success(function (data) {
                     $window.location.href = "/person/" + data.id.toString();
                 }).

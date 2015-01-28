@@ -160,7 +160,7 @@ form#newOrder(name="newOrder", ng-submit="submitOrder()", novalidate)
                                         div(ng-if="order.lens.material === 'Glass'")
                                             label.description(for="glass") Glass Options
                                             select#glass(ng-model="order.lens.glassMaterialOption")
-                                                option(value="") None
+                                                option(value="None") None
                                                 option(value="Clear") Clear
                                                 option(value="PGX") PGX
                                                 option(value="PBX") PBX
@@ -168,7 +168,7 @@ form#newOrder(name="newOrder", ng-submit="submitOrder()", novalidate)
                                         div(ng-if="order.lens.material !== 'Glass'")
                                             label.description(for="nonGlass") Non-Glass Options
                                             select#nonGlass(ng-model="order.lens.nonGlassMaterialOption")
-                                                option(value="") None
+                                                option(value="None") None
                                                 option(value="Trans Gray") Trans Gray
                                                 option(value="Trans Brown") Trans Brown
                                                 option(value="Photo Fusion") Photo Fusion
@@ -187,7 +187,7 @@ form#newOrder(name="newOrder", ng-submit="submitOrder()", novalidate)
                                         div(ng-if="order.lens.segment === 'Bifocal'")
                                             label.description(for="bifocal") Bifocal Options
                                             select#bifocal(ng-model="order.lens.bifocalSegmentOption")
-                                                option(value="") None
+                                                option(value="None") None
                                                 option(value="D-28") D-28
                                                 option(value="D-35") D-35
                                                 option(value="D-45") D-45
@@ -195,7 +195,7 @@ form#newOrder(name="newOrder", ng-submit="submitOrder()", novalidate)
                                         div(ng-if="order.lens.segment === 'Trifocal'")
                                             label.description(for="trifocal") Trifocal Options
                                             select#trifocal(ng-model="order.lens.trifocalSegmentOption")
-                                                option(value="") None
+                                                option(value="None") None
                                                 option(value="7x28") 7x28
                                                 option(value="8x35") 8x35
                                                 option(value="Executive") Executive
@@ -204,7 +204,7 @@ form#newOrder(name="newOrder", ng-submit="submitOrder()", novalidate)
                             div.container.clearfix
                                 div.row
                                     div.medium-12.columns
-                                        label.description(for="frame") Name
+                                        label.description(for="frame") Frame
                                         input#frame(type="text", ng-model="order.frame.name")
                                 div.row
                                     div.medium-6.columns
