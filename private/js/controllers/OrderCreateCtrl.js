@@ -38,7 +38,6 @@ angular.module('app.controllers')
         };
         $scope.updateBill();
 
-        // TODO: set the material correctly on save
         $scope.submitOrder = function () {
             var tempOrder = $scope.order;
             tempOrder.id = 1;
