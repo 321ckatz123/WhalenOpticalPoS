@@ -1,7 +1,7 @@
 angular.module('app.controllers')
     .controller('SearchResultsCtrl', ['$scope', '$window', '$http', '$location', function ($scope, $window, $http, $location) {
         var split = $location.path().split("/");
-        if (split.length < 4 || split[3] === '') {
+        if (split.length < 3 || split[2] === '') {
             $scope.needSearch = true;
             return;
         }

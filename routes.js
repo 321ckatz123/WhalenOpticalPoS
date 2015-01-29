@@ -7,7 +7,7 @@ module.exports = function (express, app) {
     // specify the path to the "public" namespace
     app.use(express.static(path.join(__dirname, ".dist")));
 
-    app.get("/person/search/:fields.:format?", function (req, res) {
+    app.get("/search/:fields?.:format?", function (req, res) {
         if (req.params.format) {
             var regex = new RegExp("^" + req.params.fields, 'i');
             var orders = req.db.get('orders');
@@ -45,11 +45,7 @@ module.exports = function (express, app) {
         }
     });
 
-    app.get("/person/search/", function (req, res) {
-        res.render('pages/results', {title: 'Whalen Optical'});
-    });
-
-    app.post("/person/new", function (req, res) {
+    app.post("/order/:personId?/:orderId?", function (req, res) {
         var orders = req.db.get('orders');
         orders.insert(req.body, function (err, doc) {
             if (err) {
@@ -61,7 +57,7 @@ module.exports = function (express, app) {
         });
     });
 
-    app.get("/person/new", function (req, res) {
+    app.get("/order/", function (req, res) {
         res.render('pages/person_create', {title: 'Whalen Optical'});
     });
 
