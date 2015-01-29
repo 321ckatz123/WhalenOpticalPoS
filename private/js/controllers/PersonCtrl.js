@@ -31,13 +31,47 @@ angular.module('app.controllers')
                     $scope.person.priorPrescription = secondMostRecentOrder ? secondMostRecentOrder.prescription : null;
                 }
             }).
-            error(function (data, status, headers, config) {
+            error(function (data) {
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
             });
 
         $scope.changeCurrentPrescription = function () {
             $scope.person.viewPriorPrescription = !$scope.person.viewPriorPrescription;
+        };
+
+        $scope.newOrder = function() {
+            $window.location.href = '/order/' + $scope.person._id;
+        };
+
+        $scope.editOrder = function(orderId) {
+            $window.location.href = '/order/' + $scope.person._id + "/" + orderId.toString();
+        };
+
+        $scope.deleteOrder = function (orderId) {
+            var deleteConfirm = false;
+            if ($scope.person.orders.length === 1) {
+                deleteConfirm = $window.confirm('Deleting this order will delete the entire person record. Are you sure?');
+            }
+            else {
+                deleteConfirm = $window.confirm('Are you sure?');
+            }
+
+            if (deleteConfirm) {
+                $http.delete('/order/' + $scope.person._id + "/" + orderId.toString()).
+                    success(function (data) {
+                        if ($scope.person.orders.length === 1) {
+                            $window.location.href = "/";
+                        }
+                        else {
+                            $window.location.reload();
+                        }
+                    }).
+                    error(function (data) {
+                        // called asynchronously if an error occurs
+                        // or server returns response with an error status.
+                    });
+            }
         };
 
         $scope.printReceipt = function (order) {

@@ -4,8 +4,8 @@ div.content.displayOrder(id="{{$order.id}}")
             a.icon(src="#", title="{{$order.expand ? 'Collapse' : 'Expand'}}", ng-class="{'icon-magnifier-add': !$order.expand, 'icon-magnifier-remove': $order.expand}")
         span ORDER FROM {{$order.dateOfSale | date:'MM/dd/yyyy'}}
         div.orderOptions(ng-click="$event.stopPropagation()")
-            a.icon.icon-close(src="#", title="Delete")
-            a.icon.icon-pencil(src="#", title="Edit")
+            a.icon.icon-close(src="#", title="Delete", ng-click="deleteOrder($order.id);")
+            a.icon.icon-pencil(src="#", title="Edit", ng-click="editOrder($order.id);")
             a.icon.icon-printer(src="#", title="Print Receipt", ng-click="printReceipt($order);")
     div.container.hide(ng-class="{'show':$order.expand}")
         div.row
@@ -23,16 +23,16 @@ div.content.displayOrder(id="{{$order.id}}")
                     div.header LENS
                     div.container.lens
                         div
-                            div.medium-6.columns
+                            div.columns(ng-class="{'medium-6' : $order.lens.materialOption, 'medium-12': !$order.lens.materialOption}")
                                 ul.lens
                                     li.description Material
                                     li {{$order.lens.material}}
-                            div.medium-6.columns
+                            div.medium-6.columns(ng-if="$order.lens.materialOption")
                                 ul.lens
                                     li.description.option Option
                                     li {{$order.lens.materialOption}}
                         div
-                            div.medium-6.columns
+                            div.columns(ng-class="{'medium-6' : $order.lens.segmentOption, 'medium-12': !$order.lens.segmentOption}")
                                 ul.lens
                                     li.description Segment
                                     li {{$order.lens.segment}}

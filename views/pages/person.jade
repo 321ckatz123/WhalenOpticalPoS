@@ -31,6 +31,6 @@ block content
                     div.content
                         div.header ORDERS
                             div.orderOptions
-                                a.icon.icon-plus(src="#", title="Create New Order")
+                                a.icon.icon-plus(src="#", title="Create New Order", ng-click="newOrder()")
                         div.container
-                            div(ng-include, ng-repeat="order in person.orders", onload="$order = order", src="'/order.html'")
+                            div(ng-include, ng-class="{'last': $index === person.orders.length - 1}", ng-repeat="order in person.orders", onload="$order = order", src="'/order.html'")

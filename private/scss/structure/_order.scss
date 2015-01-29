@@ -24,6 +24,12 @@
   }
 }
 
+.last {
+  .displayOrder {
+    margin-bottom: 0;
+  }
+}
+
 .displayOrder {
   // in the order detail, if the information section has an address2, we have to make this a little bigger
   .address2 .container.prescription {
@@ -40,10 +46,6 @@
     background-color: $blue-dark;
     color: $white;
     cursor: pointer;
-  }
-
-  &:last-of-type {
-    margin-bottom: 0;
   }
 
   #bill {

@@ -273,4 +273,4 @@ form#newOrder(name="newOrder", ng-submit="submitOrder()", novalidate)
                                 textarea(ng-model="order.notes")
                 div.row.submit
                     div.columns.large-12
-                        button.button.radius(type="submit", ng-disabled="newOrder.$invalid", ng-click="submitOrder()") Add New Order
+                        button.button.radius(type="submit", ng-disabled="newOrder.$invalid", ng-click="submitOrder()") {{update ? 'Update' : 'Add New'}} Order
