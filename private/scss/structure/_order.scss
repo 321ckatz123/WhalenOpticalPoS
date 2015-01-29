@@ -41,4 +41,22 @@
     color: $white;
     cursor: pointer;
   }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  #bill {
+    .content {
+      margin-bottom: 0;
+    }
+  }
+
+  @media #{$large-up} {
+    #glasses {
+      .content:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
 }
