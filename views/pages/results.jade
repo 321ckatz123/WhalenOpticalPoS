@@ -14,12 +14,12 @@ block content
             div.columns
                 a(href="/person/{{result._id}}" target="_self")
                     div.content
-                        div.header {{result.information.fName.toUpperCase()}} {{result.information.lName.toUpperCase()}} - LAST SALE ON {{result.dateOfLastSale | date:'MM/dd/yyyy'}}
+                        div.header {{result.fName.toUpperCase()}} {{result.lName.toUpperCase()}} - LAST SALE ON {{result.order.dateOfSale | date:'MM/dd/yyyy'}}
                         div.large-5.innerContent.columns
                             div.content
                                 div.header CURRENT INFORMATION
-                                div.container(ng-include, onload="$address = result.information", src="'/address.html'")
+                                div.container(ng-include, onload="$address = result.order.information", src="'/address.html'")
                         div.large-7.innerContent.columns
                             div.content
                                 div.header CURRENT PRESCRIPTION
-                                div.container(ng-include, onload="$prescription = result.prescription", src="'/prescription.html'")
+                                div.container(ng-include, onload="$prescription = result.order.prescription", src="'/prescription.html'")

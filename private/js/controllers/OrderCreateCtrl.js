@@ -67,8 +67,8 @@ angular.module('app.controllers')
             delete tempOrder.tax;
 
             var newOrder = {
-                fName: $scope.order.information.fName,
-                lName: $scope.order.information.lName,
+                fName: tempOrder.information ? tempOrder.information.fName : '',
+                lName: tempOrder.information ? tempOrder.information.lName: '',
                 orders: [angular.fromJson(angular.toJson(tempOrder))]
             };
 
