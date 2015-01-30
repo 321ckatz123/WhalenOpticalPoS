@@ -112,6 +112,7 @@ angular.module('app.controllers')
                         $scope.order.id = data.order.id + 1;
                         $scope.order.information = data.order.information;
                         $scope.order.prescription = data.order.prescription;
+                        $scope.update = true;
                     }
 
                     if ($scope.order.lens) {
