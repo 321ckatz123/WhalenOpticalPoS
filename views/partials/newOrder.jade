@@ -201,6 +201,8 @@ form#newOrder(name="newOrder", ng-submit="submitOrder()", novalidate)
                                                 option(value="Executive") Executive
                         div.content
                             div.header FRAME
+                                div.orderOptions(ng-if="update", ng-click="$event.stopPropagation()")
+                                    a.icon.icon-pencil(src="#", title="Existing Frames", ng-click="getExistingFrames();")
                             div.container.clearfix
                                 div.row
                                     div.medium-12.columns
@@ -274,3 +276,40 @@ form#newOrder(name="newOrder", ng-submit="submitOrder()", novalidate)
                 div.row.submit
                     div.columns.large-12
                         button.button.radius(type="submit", ng-disabled="newOrder.$invalid", ng-click="submitOrder()") {{update ? 'Update' : 'Add New'}} Order
+        script(type="text/ng-template", id="/existingFrames.html")
+            div#existingFrames.content(ng-repeat="frame in existingFrames", ng-click="selectFrame(frame)")
+                div.header FRAME
+                div.container.frame
+                    div.existingFrame
+                        div.medium-12.columns
+                            ul.frame
+                                li.description Name
+                                li {{frame.name}}
+                        div
+                            div.medium-6.columns
+                                ul.frame
+                                    li.description Color
+                                    li {{frame.color}}
+                            div.medium-6.columns.printHide
+                                ul.frame
+                                    li.description ED
+                                    li {{frame.ed}}
+                        div.clearfix.printHide
+                            div.medium-6.columns
+                                ul.frame
+                                    li.description Lens Size
+                                    li {{frame.lens}}
+                            div.medium-6.columns
+                                ul.frame
+                                    li.description Vertical
+                                    li {{frame.vertical}}
+                        div.clearfix.printHide
+                            div.medium-6.columns
+                                ul.frame
+                                    li.description Bridge
+                                    li {{frame.bridge}}
+                            div.medium-6.columns
+                                ul.frame
+                                    li.description Temple
+                                    li {{frame.temple}}
+            a.close-reveal-modal(ng-click="cancel()") &#215;

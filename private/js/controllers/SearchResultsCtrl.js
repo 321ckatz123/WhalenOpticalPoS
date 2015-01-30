@@ -12,5 +12,6 @@ angular.module('app.controllers')
             }).
             error(function (data) {
                 $window.alert(data);
+                Rollbar.error($window.location.pathname + '.json', data);
             });
     }]);

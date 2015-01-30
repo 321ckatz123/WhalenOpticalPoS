@@ -193,6 +193,26 @@ module.exports = function (express, app) {
         res.render('pages/person_create', {title: 'Whalen Optical'});
     });
 
+    app.get("/frame/:personId.json", function (req, res) {
+        var orders = req.db.get('orders');
+        orders.findOne({"_id": req.params.personId},
+            function (err, returnValue) {
+                if (err) {
+                    res.status(500).send(err);
+                }
+                else {
+                    var existingFrames = _.pluck(returnValue.orders, 'frame');
+                    _.remove(existingFrames, function(frame) { return !frame; });
+                    if(existingFrames) {
+                        res.status(200).json( _.uniq(existingFrames));
+                    }
+                    else {
+                        res.sendStatus(200);
+                    }
+                }
+            });
+    });
+
     app.get("/person/:id.:format?", function (req, res) {
         if (req.params.format) {
             var orders = req.db.get('orders');

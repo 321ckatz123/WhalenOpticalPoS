@@ -2,6 +2,7 @@
 
 var http = require('http');
 var path = require('path');
+var rollbar = require('rollbar');
 
 // load the configuration
 var dotenv = require('dotenv');
@@ -54,5 +55,11 @@ http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
 });
 
-
 require("./routes")(express, app);
+
+app.use(rollbar.errorHandler('c6ad4dacb8a14857ac0aa0ec8fbd7e2a'));
+
+var options = {
+    exitOnUncaughtException: true
+};
+rollbar.handleUncaughtExceptions('c6ad4dacb8a14857ac0aa0ec8fbd7e2a', options)

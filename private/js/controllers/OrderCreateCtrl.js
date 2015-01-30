@@ -1,5 +1,5 @@
 angular.module('app.controllers')
-    .controller('OrderCreateCtrl', ['$scope', '$window', '$http', '$location', function ($scope, $window, $http, $location) {
+    .controller('OrderCreateCtrl', ['$scope', '$window', '$http', '$location', '$modal', function ($scope, $window, $http, $location, $modal) {
         var defaultOrder = {
             lens: {
                 material: "Plastic",
@@ -15,6 +15,11 @@ angular.module('app.controllers')
                 }
             ]
         };
+
+        // see what information was passed into the page
+        var split = $location.path().split("/");
+        var personId = split.length > 2 ? split[2] : null;
+        var orderId = split.length > 3 ? split[3] : null;
 
         $scope.removeLineItem = function (lineItem) {
             var index = $scope.order.bill.indexOf(lineItem);
@@ -80,13 +85,20 @@ angular.module('app.controllers')
                 }).
                 error(function (data) {
                     $window.alert(data);
+                    Rollbar.error($window.location.pathname, data);
                 });
         };
 
-        // see what information was passed into the page
-        var split = $location.path().split("/");
-        var personId = split.length > 2 ? split[2] : null;
-        var orderId = split.length > 3 ? split[3] : null;
+        $scope.getExistingFrames = function () {
+            var modalInstance = $modal.open({
+                templateUrl: '/existingFrames.html',
+                controller: 'AddFrameToOrderCtrl'
+            });
+
+            modalInstance.result.then(function (selectedFrame) {
+                $scope.order.frame = selectedFrame;
+            });
+        };
 
         if (personId || orderId) {
             $http.get($window.location.pathname + '.json').
@@ -102,7 +114,7 @@ angular.module('app.controllers')
                         $scope.order.prescription = data.order.prescription;
                     }
 
-                    if($scope.order.lens) {
+                    if ($scope.order.lens) {
                         if ($scope.order.lens.material === "Glass") {
                             $scope.order.lens.glassMaterialOption = $scope.order.lens.materialOption;
                         }
@@ -121,6 +133,7 @@ angular.module('app.controllers')
                 }).
                 error(function (data) {
                     $window.alert(data);
+                    Rollbar.error($window.location.pathname + '.json', data);
                 });
         }
         else {
