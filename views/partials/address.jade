@@ -2,7 +2,9 @@ div.address
     div.name {{$address.fName}} {{$address.lName}}
     div {{$address.address1}}
     div(ng-if="$address.address2") {{$address.address2}}
-    div {{$address.city}}, {{$address.state}} {{$address.zip}}
+    div {{$address.city}}
+        span(ng-if="$address.city && $address.state") ,&nbsp;
+        | {{$address.state}} {{$address.zip}}
     div.phone(ng-if="$address.phone")
         strong p:
         | &nbsp;{{$address.phone | phone}}
