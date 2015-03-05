@@ -36,6 +36,8 @@ angular.module('app.controllers')
                 // or server returns response with an error status.
             });
 
+        $scope.currentDate = new Date();
+
         $scope.changeCurrentPrescription = function () {
             $scope.person.viewPriorPrescription = !$scope.person.viewPriorPrescription;
         };
