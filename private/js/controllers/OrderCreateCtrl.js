@@ -8,7 +8,7 @@ angular.module('app.controllers')
             },
             bill: [
                 {
-                    name: "Lens"
+                    name: "Lenses"
                 },
                 {
                     name: "Frame"
