@@ -25,7 +25,8 @@ ul.prescription {
       font-style: italic;
     }
     &.pupillary {
-      @include position(relative, 16px null null null);
+      position: relative;
+      top: 16px;
     }
 
     &.pupillary.description {

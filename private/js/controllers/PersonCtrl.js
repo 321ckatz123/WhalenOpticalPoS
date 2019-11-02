@@ -1,7 +1,7 @@
 angular.module('app.controllers')
     .controller('PersonCtrl', ['$scope', '$window', '$http', function ($scope, $window, $http) {
         $http.get($window.location.pathname + '.json').
-            success(function (data) {
+            then(function ({ data }) {
                 $scope.person = data;
 
                 var orders = $scope.person.orders;
@@ -31,7 +31,7 @@ angular.module('app.controllers')
                     $scope.person.priorPrescription = secondMostRecentOrder ? secondMostRecentOrder.prescription : null;
                 }
             }).
-            error(function (data) {
+            catch(function () {
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
             });
@@ -61,7 +61,7 @@ angular.module('app.controllers')
 
             if (deleteConfirm) {
                 $http.delete('/order/' + $scope.person._id + "/" + orderId.toString()).
-                    success(function (data) {
+                    then(function () {
                         if ($scope.person.orders.length === 1) {
                             $window.location.href = "/";
                         }
@@ -69,7 +69,7 @@ angular.module('app.controllers')
                             $window.location.reload();
                         }
                     }).
-                    error(function (data) {
+                    catch(function ({ data }) {
                         $window.alert(data);
                         Rollbar.error('/order/' + $scope.person._id + "/" + orderId.toString(), data);
                     });

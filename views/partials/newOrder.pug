@@ -1,33 +1,33 @@
 form#newOrder(name="newOrder", ng-submit="submitOrder()", novalidate)
-    div.row(ng-controller="OrderCreateCtrl")
-        div.large-12.columns
+    div.grid-x.grid-margin-x(ng-controller="OrderCreateCtrl")
+        div.large-12.cell
             div.header NEW ORDER
             div.container
-                div.row
-                    div.columns.large-6
+                div.grid-x.grid-margin-x
+                    div.cell.large-6
                         div.content
                             div.header ADDRESS
                             div.container.clearfix
-                                div.row
-                                    div.medium-6.columns
+                                div.grid-x.grid-margin-x
+                                    div.medium-6.cell
                                         label.description First Name
                                             input(type="text", ng-model="order.information.fName")
-                                    div.medium-6.columns
+                                    div.medium-6.cell
                                         label.description Last Name
                                             input(type="text", ng-model="order.information.lName")
-                                div.row
-                                    div.medium-12.columns
+                                div.grid-x.grid-margin-x
+                                    div.medium-12.cell
                                         label.description Address 1
                                             input(type="text", ng-model="order.information.address1")
-                                div.row
-                                    div.medium-12.columns
+                                div.grid-x.grid-margin-x
+                                    div.medium-12.cell
                                         label.description Address 2
                                             input(type="text", ng-model="order.information.address2")
-                                div.row
-                                    div.medium-6.columns
+                                div.grid-x.grid-margin-x
+                                    div.medium-6.cell
                                         label.description City
                                             input(type="text", ng-model="order.information.city")
-                                    div.medium-3.columns
+                                    div.medium-3.cell
                                         label.description State
                                             select(ng-model="order.information.state")
                                                 option(value="AK") AK
@@ -81,20 +81,20 @@ form#newOrder(name="newOrder", ng-submit="submitOrder()", novalidate)
                                                 option(value="WI") WI
                                                 option(value="WV") WV
                                                 option(value="WY") WY
-                                    div.medium-3.columns
+                                    div.medium-3.cell
                                         label.description Zip Code
                                             input(name="zipCode", type="text", ng-model="order.information.zip", ng-pattern="/^\\d{5}(-\\d{4})?$/")
                                             span.error(ng-show="newOrder.zipCode.$invalid && !newOrder.zipCode.$pristine") Invalid zip code
-                                div.row
-                                    div.medium-6.columns
+                                div.grid-x.grid-margin-x
+                                    div.medium-6.cell
                                         label.description Date of Birth
                                             input(name="dob", type="date", ng-model="order.information.dob", min="1850-01-01")
                                             span.error(ng-show="newOrder.dob.$invalid && !newOrder.dob.$pristine") Invalid date of birth
-                                    div.medium-6.columns
+                                    div.medium-6.cell
                                         label.description Phone Number
                                             input(name="phone", type="text", ng-model="order.information.phone", ng-pattern="/^\\d{3}-\\d{3}-\\d{4}$/")
                                             span.error(ng-show="newOrder.phone.$invalid && !newOrder.phone.$pristine") Invalid phone number
-                    div.columns.large-6
+                    div.cell.large-6
                         div.content
                             div.header PRESCRIPTION
                             div.container.clearfix.prescriptionContainer
@@ -141,13 +141,13 @@ form#newOrder(name="newOrder", ng-submit="submitOrder()", novalidate)
                                     li L
                                     li
                                         input(type="text", ng-model="order.prescription.left.reading")
-                div.row
-                    div.columns.large-7
+                div.grid-x.grid-margin-x
+                    div.cell.large-7
                         div.content
                             div.header LENS
                             div.container.clearfix
-                                div.row
-                                    div.medium-6.columns
+                                div.grid-x.grid-margin-x
+                                    div.medium-6.cell
                                         label.description(for="material") Material
                                         select#material(ng-model="order.lens.material")
                                             option(value="Plastic") Plastic
@@ -157,7 +157,7 @@ form#newOrder(name="newOrder", ng-submit="submitOrder()", novalidate)
                                             option(value="1.60") 1.60
                                             option(value="1.67") 1.67
                                             option(value="1.74") 1.74
-                                    div.medium-6.columns
+                                    div.medium-6.cell
                                         div(ng-if="order.lens.material === 'Glass'")
                                             label.description(for="glass") Glass Options
                                             select#glass(ng-model="order.lens.glassMaterialOption")
@@ -176,8 +176,8 @@ form#newOrder(name="newOrder", ng-submit="submitOrder()", novalidate)
                                                 option(value="Polar Gray") Polar Gray
                                                 option(value="Polar Brown") Polar Brown
                                                 option(value="Antireflective") Antireflective
-                                div.row
-                                    div.medium-6.columns
+                                div.grid-x.grid-margin-x
+                                    div.medium-6.cell
                                         label.description(for="material") Segment
                                         select#material(ng-model="order.lens.segment")
                                             option(value="Single") Single
@@ -185,7 +185,7 @@ form#newOrder(name="newOrder", ng-submit="submitOrder()", novalidate)
                                             option(value="Trifocal") Trifocal
                                             option(value="Progressive") Progressive
                                             option(value="Digital Progressive") Digital Progressive
-                                    div.medium-6.columns
+                                    div.medium-6.cell
                                         div(ng-if="order.lens.segment === 'Bifocal'")
                                             label.description(for="bifocal") Bifocal Options
                                             select#bifocal(ng-model="order.lens.bifocalSegmentOption")
@@ -206,29 +206,29 @@ form#newOrder(name="newOrder", ng-submit="submitOrder()", novalidate)
                                 div.orderOptions(ng-if="update", ng-click="$event.stopPropagation()")
                                     a.icon.icon-pencil(src="#", title="Existing Frames", ng-click="getExistingFrames();")
                             div.container.clearfix
-                                div.row
-                                    div.medium-12.columns
+                                div.grid-x.grid-margin-x
+                                    div.medium-12.cell
                                         label.description(for="frame") Frame
                                         input#frame(type="text", ng-model="order.frame.name")
-                                div.row
-                                    div.medium-6.columns
+                                div.grid-x.grid-margin-x
+                                    div.medium-6.cell
                                         label.description(for="frameColor") Color
                                         input#frameColor(type="text", ng-model="order.frame.color")
-                                    div.medium-6.columns
+                                    div.medium-6.cell
                                         label.description(for="frameED") ED
                                         input#frameED(type="text", ng-model="order.frame.ed")
-                                div.row
-                                    div.medium-6.columns
+                                div.grid-x.grid-margin-x
+                                    div.medium-6.cell
                                         label.description(for="frameLens") Lens Size
                                         input#frameLens(type="text", ng-model="order.frame.lens")
-                                    div.medium-6.columns
+                                    div.medium-6.cell
                                         label.description(for="frameVertical") Vertical
                                         input#frameVertical(type="text", ng-model="order.frame.vertical")
-                                div.row
-                                    div.medium-6.columns
+                                div.grid-x.grid-margin-x
+                                    div.medium-6.cell
                                         label.description(for="frameBridge") Bridge
                                         input#frameBridge(type="text", ng-model="order.frame.bridge")
-                                    div.medium-6.columns
+                                    div.medium-6.cell
                                         label.description(for="frameTemple") Temple
                                         select#frameTemple(ng-model="order.frame.temple")
                                             option(value="130") 130
@@ -238,79 +238,79 @@ form#newOrder(name="newOrder", ng-submit="submitOrder()", novalidate)
                                             option(value="150") 150
                                             option(value="155") 155
                                             option(value="160") 160
-                    div.columns.large-5
+                    div.cell.large-5
                         div.content
                             div.header BILL
                             div.container.clearfix.bill
-                                div.row
-                                    div.small-5.columns.description Name
-                                    div.small-5.columns.description Price
-                                    div.small-2.columns
-                                div.row(ng-repeat="lineItem in order.bill")
-                                    div.small-5.columns
+                                div.grid-x.grid-margin-x
+                                    div.small-5.cell.description Name
+                                    div.small-5.cell.description Price
+                                    div.small-2.cell
+                                div.grid-x.grid-margin-x(ng-repeat="lineItem in order.bill")
+                                    div.small-5.cell
                                         input(type="text", ng-model="lineItem.name")
-                                    div.small-5.columns
+                                    div.small-5.cell
                                         input(name="lineItem{{$index}}", type="number", ng-model="lineItem.price", ng-change="updateBill()")
                                         span.error(ng-show="newOrder.lineItem{{$index}}.$invalid && !newOrder.lineItem{{$index}}.$pristine") Invalid amount
-                                    div.small-2.columns
+                                    div.small-2.cell
                                         a.icon.icon-close(ng-click="removeLineItem(lineItem)")
-                                div.row
-                                    div.small-12.columns
+                                div.grid-x.grid-margin-x
+                                    div.small-12.cell
                                         a(ng-click="addLineItem()")
                                             div#newLineItem.content
                                                 div.icon.icon-plus
                                                     span.text Add New Line Item
                                 hr
-                                div.row
-                                    div.small-5.columns.description Tax (1%)
-                                    div.small-2.columns
-                                    div.small-5.columns {{order.tax | currency}}
-                                div.row
-                                    div.small-5.columns.description Total
-                                    div.small-2.columns
-                                    div.small-5.columns {{order.total | currency}}
-                div.row
-                    div.columns.large-12
+                                div.grid-x.grid-margin-x
+                                    div.small-5.cell.description Tax (1%)
+                                    div.small-2.cell
+                                    div.small-5.cell {{order.tax | currency}}
+                                div.grid-x.grid-margin-x
+                                    div.small-5.cell.description Total
+                                    div.small-2.cell
+                                    div.small-5.cell {{order.total | currency}}
+                div.grid-x.grid-margin-x
+                    div.cell.large-12
                         div.content
                             div.header NOTES
                             div.container.clearfix
                                 textarea(ng-model="order.notes")
-                div.row.submit
-                    div.columns.large-12
+                div.grid-x.grid-margin-x.submit
+                    div.cell.large-12
                         button.button.radius(type="submit", ng-disabled="newOrder.$invalid", ng-click="submitOrder()") {{update ? 'Update' : 'Add New'}} Order
         script(type="text/ng-template", id="/existingFrames.html")
             div#existingFrames.content(ng-repeat="frame in existingFrames", ng-click="selectFrame(frame)")
                 div.header FRAME
                 div.container.frame
                     div.existingFrame
-                        div.medium-12.columns
+                        div.medium-12.cell
                             ul.frame
                                 li.description Name
                                 li {{frame.name}}
                         div
-                            div.medium-6.columns
+                            div.medium-6.cell
                                 ul.frame
                                     li.description Color
                                     li {{frame.color}}
-                            div.medium-6.columns.printHide
+                            div.medium-6.cell.printHide
                                 ul.frame
                                     li.description ED
                                     li {{frame.ed}}
                         div.clearfix.printHide
-                            div.medium-6.columns
+                            div.medium-6.cell
                                 ul.frame
                                     li.description Lens Size
                                     li {{frame.lens}}
-                            div.medium-6.columns
+                            div.medium-6.cell
                                 ul.frame
                                     li.description Vertical
                                     li {{frame.vertical}}
                         div.clearfix.printHide
-                            div.medium-6.columns
+                            div.medium-6.cell
                                 ul.frame
                                     li.description Bridge
                                     li {{frame.bridge}}
-                            div.medium-6.columns
+                            div.medium-6.cell
                                 ul.frame
                                     li.description Temple
                                     li {{frame.temple}}

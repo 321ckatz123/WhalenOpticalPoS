@@ -7,10 +7,10 @@ angular.module('app.controllers')
         }
 
         $http.get($window.location.pathname + '.json').
-            success(function (data) {
+            then(function ({ data }) {
                 $scope.searchResults = data;
             }).
-            error(function (data) {
+            catch(function ({ data }) {
                 $window.alert(data);
                 Rollbar.error($window.location.pathname + '.json', data);
             });

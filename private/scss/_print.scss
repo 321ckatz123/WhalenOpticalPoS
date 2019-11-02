@@ -76,7 +76,7 @@
         top: $top + 160;
       }
 
-      // emulate .large-5.columns as Foundation hides them from print styles
+      // emulate .large-5.cell as Foundation hides them from print styles
       #bill {
         width: 40%;
         position: absolute;
@@ -91,12 +91,4 @@
   .print {
     display: none;
   }
-}
-
-.hide {
-  display: none;
-}
-
-.show {
-  display: block;
 }

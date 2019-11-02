@@ -80,10 +80,11 @@ angular.module('app.controllers')
             };
 
             $http.post($window.location.pathname, newOrder).
-                success(function (data) {
+                then(function ({ data }) {
+                  console.log(data);
                     $window.location.href = "/person/" + data.id.toString();
                 }).
-                error(function (data) {
+                catch(function ({ data }) {
                     $window.alert(data);
                     Rollbar.error($window.location.pathname, data);
                 });
@@ -102,7 +103,7 @@ angular.module('app.controllers')
 
         if (personId || orderId) {
             $http.get($window.location.pathname + '.json').
-                success(function (data) {
+                then(function ({ data }) {
                     if (orderId) {
                         $scope.order = data.order;
                         $scope.update = true;
@@ -132,7 +133,7 @@ angular.module('app.controllers')
                     }
                     $scope.updateBill();
                 }).
-                error(function (data) {
+                catch(function ({ data }) {
                     $window.alert(data);
                     Rollbar.error($window.location.pathname + '.json', data);
                 });

@@ -13,13 +13,13 @@ block content
                     li Date {{currentDate | date:'MM/dd/yyyy'}}
             div#print.container
         div.noPrint
-            div.row
-                div.large-5.columns
+            div#recentPrescriptions.grid-x.grid-margin-x
+                div.large-5.cell
                     div.content.information
                         div.header MOST RECENT INFORMATION
                         div.container(ng-include, ng-if="person.mostRecentAddress" onload="$address = person.mostRecentAddress", src="'/address.html'")
                         div.container(ng-if="!person.mostRecentAddress") No previous orders
-                div.large-7.columns
+                div.large-7.cell
                     div.content
                         div.header {{person.viewPriorPrescription ? 'PREVIOUS' : 'MOST RECENT'}} PRESCRIPTION
                         div.container.prescription(ng-include, ng-if="person.mostRecentPrescription && !person.viewPriorPrescription", onload="$prescription = person.mostRecentPrescription", src="'/prescription.html'")
@@ -27,8 +27,8 @@ block content
                         div.container.prescription(ng-if="!person.mostRecentPrescription") No previous prescriptions
                         div.previousPrescription.prior(ng-click="changeCurrentPrescription()", ng-if="person.mostRecentPrescription && person.priorPrescription") View {{person.viewPriorPrescription ? 'Current' : 'Prior'}} Prescription
                         div.previousPrescription(ng-if="person.mostRecentPrescription && !person.priorPrescription") No Prior Prescription
-            div#orders.row
-                div.large-12.columns
+            div#orders.grid-x.grid-margin-x
+                div.large-12.cell
                     div.content
                         div.header ORDERS
                             div.orderOptions

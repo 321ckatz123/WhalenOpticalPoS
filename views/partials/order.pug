@@ -7,36 +7,36 @@ div.content.displayOrder(id="{{$order.id}}")
             a.icon.icon-close(src="#", title="Delete", ng-click="deleteOrder($order.id);")
             a.icon.icon-pencil(src="#", title="Edit", ng-click="editOrder($order.id);")
             a.icon.icon-printer(src="#", title="Print Receipt", ng-click="printReceipt($order);")
-    div.container.hide(ng-class="{'show':$order.expand}")
-        div.row
-            div#information.large-5.columns
+    div.container(ng-class="{'show':$order.expand, 'hide':!$order.expand}")
+        div.grid-x.grid-margin-x
+            div#information.large-5.cell
                 div.content
                     div.header INFORMATION
                     div.container(ng-include, onload="$address = $order.information", src="'/address.html'")
-            div#prescription.large-7.columns
+            div#prescription.large-7.cell
                 div.content(ng-class="{address2: $order.information.address2}")
                     div.header PRESCRIPTION
                     div.container.prescription(ng-include, onload="$prescription = $order.prescription", src="'/prescription.html'")
-        div.row
-            div#glasses.large-7.columns
+        div.grid-x.grid-margin-x
+            div#glasses.large-7.cell
                 div#lens.content
                     div.header LENSES
                     div.container.lens
                         div
-                            div.columns(ng-class="{'medium-6' : $order.lens.materialOption, 'medium-12': !$order.lens.materialOption}")
+                            div.cell(ng-class="{'medium-6' : $order.lens.materialOption, 'medium-12': !$order.lens.materialOption}")
                                 ul.lens
                                     li.description Material
                                     li {{$order.lens.material}}
-                            div.medium-6.columns(ng-if="$order.lens.materialOption")
+                            div.medium-6.cell(ng-if="$order.lens.materialOption")
                                 ul.lens
                                     li.description.option Option
                                     li {{$order.lens.materialOption}}
                         div
-                            div.columns(ng-class="{'medium-6' : $order.lens.segmentOption, 'medium-12': !$order.lens.segmentOption}")
+                            div.cell(ng-class="{'medium-6' : $order.lens.segmentOption, 'medium-12': !$order.lens.segmentOption}")
                                 ul.lens
                                     li.description Segment
                                     li {{$order.lens.segment}}
-                            div.medium-6.columns(ng-if="$order.lens.segmentOption")
+                            div.medium-6.cell(ng-if="$order.lens.segmentOption")
                                 ul.lens
                                     li.description.option Option
                                     li {{$order.lens.segmentOption}}
@@ -47,36 +47,36 @@ div.content.displayOrder(id="{{$order.id}}")
                             li.description Name
                             li {{$order.frame.name}}
                         div
-                            div.medium-6.columns
+                            div.medium-6.cell
                                 ul.frame
                                     li.description Color
                                     li {{$order.frame.color}}
-                            div.medium-6.columns.printHide
+                            div.medium-6.cell.printHide
                                 ul.frame
                                     li.description ED
                                     li {{$order.frame.ed}}
                         div.clearfix.printHide
-                            div.medium-6.columns
+                            div.medium-6.cell
                                 ul.frame
                                     li.description Lens Size
                                     li {{$order.frame.lens}}
-                            div.medium-6.columns
+                            div.medium-6.cell
                                 ul.frame
                                     li.description Vertical
                                     li {{$order.frame.vertical}}
                         div.clearfix.printHide
-                            div.medium-6.columns
+                            div.medium-6.cell
                                 ul.frame
                                     li.description Bridge
                                     li {{$order.frame.bridge}}
-                            div.medium-6.columns
+                            div.medium-6.cell
                                 ul.frame
                                     li.description Temple
                                     li {{$order.frame.temple}}
                 div#notes.content
                     div.header NOTES
                     div.container.notes {{$order.notes}}
-            div#bill.large-5.columns
+            div#bill.large-5.cell
                 div.content
                     div.header BILL
                     div.container.bill

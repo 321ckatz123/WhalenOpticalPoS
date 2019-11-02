@@ -2,7 +2,7 @@ extends ../layout
 block content
     include ../partials/subheader
 
-    div.row
-        div.columns
+    div.grid-x.grid-margin-x
+        div.cell
             div.large-12.content
                 div(ng-include, src="'/newOrder.html'")

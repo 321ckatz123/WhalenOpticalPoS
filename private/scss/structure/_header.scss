@@ -1,5 +1,5 @@
 #header {
-  @include size(100% 75px);
+  @include size(100%, 75px);
   line-height: 110%;
   border-bottom: solid 3px $black;
   background-color: $teal;
@@ -15,12 +15,12 @@
   }
 
   img {
-    @include size(64px 48px);
+    @include size(64px, 48px);
     position: relative;
     top: -6px;
 
     @media #{$small-only} {
-      @include size(48px 36px);
+      @include size(48px, 36px);
       top: -4px;
     }
   }

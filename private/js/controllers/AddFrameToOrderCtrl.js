@@ -5,7 +5,7 @@ angular.module('app.controllers')
         var personId = split.length > 2 ? split[2] : null;
 
         $http.get('/frame/' + personId + '.json').
-            success(function (data) {
+            then(function ({ data }) {
                 if (!data.length) {
                     alert("There are no existing frames tied to this person");
                     return;
@@ -13,7 +13,7 @@ angular.module('app.controllers')
 
                 $scope.existingFrames = data;
             }).
-            error(function (data) {
+            catch(function ({ data }) {
                 $window.alert(data);
                 Rollbar.error('/frame/' + personId + '.json', data);
             });

@@ -4,22 +4,22 @@ block content
     include ../partials/subheader
 
     div.searchResult(ng-controller="SearchResultsCtrl")
-        div.row(ng-if="needSearch")
-            div.notice.columns
+        div.grid-x.grid-margin-x(ng-if="needSearch")
+            div.notice.cell
                 div.content Please enter search criteria
-        div.row(ng-if="searchResults.length === 0")
-            div.notice.columns(ng-if="searchResults.length === 0")
+        div.grid-x.grid-margin-x(ng-if="searchResults.length === 0")
+            div.notice.cell(ng-if="searchResults.length === 0")
                     div.content No existing orders matched search criteria
-        div.row(ng-repeat="result in searchResults")
-            div.columns
+        div.grid-x.grid-margin-x(ng-repeat="result in searchResults")
+            div.cell
                 a(href="/person/{{result._id}}" target="_self")
                     div.content
                         div.header {{result.fName.toUpperCase()}} {{result.lName.toUpperCase()}} - LAST SALE ON {{result.order.dateOfSale | date:'MM/dd/yyyy'}}
-                        div.large-5.innerContent.columns
+                        div.large-5.innerContent.cell
                             div.content
                                 div.header CURRENT INFORMATION
                                 div.container(ng-include, onload="$address = result.order.information", src="'/address.html'")
-                        div.large-7.innerContent.columns
+                        div.large-7.innerContent.cell
                             div.content
                                 div.header CURRENT PRESCRIPTION
                                 div.container(ng-include, onload="$prescription = result.order.prescription", src="'/prescription.html'")

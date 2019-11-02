@@ -2,18 +2,22 @@
 
 var http = require('http');
 var path = require('path');
-var rollbar = require('rollbar');
+var Rollbar = require('rollbar');
+var rollbar = new Rollbar({
+  accessToken: 'c6ad4dacb8a14857ac0aa0ec8fbd7e2a',
+  captureUncaught: true,
+  captureUnhandledRejections: true
+});
 
 // load the configuration
-var dotenv = require('dotenv');
-dotenv.load();
+require('dotenv').config()
 
 // start express and have it listen to a particular port, specified in the config
 var express = require('express');
 var app = express();
 app.set('port', process.env.PORT);
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 app.set('title', 'Whalen Optical');
 
 // specify the favicon
@@ -57,9 +61,4 @@ http.createServer(app).listen(app.get('port'), function () {
 
 require("./routes")(express, app);
 
-app.use(rollbar.errorHandler('c6ad4dacb8a14857ac0aa0ec8fbd7e2a'));
-
-var options = {
-    exitOnUncaughtException: true
-};
-rollbar.handleUncaughtExceptions('c6ad4dacb8a14857ac0aa0ec8fbd7e2a', options)
+app.use(rollbar.errorHandler());

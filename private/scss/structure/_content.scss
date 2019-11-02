@@ -3,7 +3,7 @@
   @include clearfix();
 
   margin: 0 auto .9375rem;
-  max-width: 1000px;
+  max-width: $max-width;
   background-color: $white;
   border: solid 1px $gray-lighter-still;
 
