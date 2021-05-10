@@ -18,7 +18,7 @@
     "express": "4.17.1",
     "foundation-sites": "6.5.3",
     "gulp": "4.0.2",
-    "lodash": "4.17.15",
+    "lodash": "4.17.21",
     "moment": "2.24.0",
     "mongodb": "3.3.3",
     "monk": "7.1.1",
